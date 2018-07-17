@@ -1,7 +1,6 @@
 package datadriver;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,6 +29,13 @@ public abstract class DataDriver
 	{
 		this.dataMap = new HashMap<String, String>();
 		this.setDocument(doc);
+	}
+	public DataDriver(String folderPath, String extension)
+	{
+		this.folderPath = folderPath;
+		this.key = "";
+		this.dataMap = new HashMap<String, String>();
+		this.extension = extension;
 	}
 	
 	//Methods

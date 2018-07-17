@@ -66,4 +66,10 @@ public class InputDropDownMenu extends FormElement
 	@Override
 	public void setData(String text)
 	{this.combo.setSelectedItem(text);}
+
+	@Override
+	public boolean isFilled()
+	{
+		return true;
+	}
 }

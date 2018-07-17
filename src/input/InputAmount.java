@@ -49,4 +49,10 @@ public class InputAmount extends FormElement
 	@Override
 	public void setData(String text)
 	{this.tf.setText(text);}
+
+	@Override
+	public boolean isFilled() 
+	{
+		return !this.tf.getText().trim().equals("");
+	}
 }

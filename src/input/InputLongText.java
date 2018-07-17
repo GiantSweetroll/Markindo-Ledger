@@ -51,4 +51,9 @@ public class InputLongText extends FormElement
 	@Override
 	public void setData(String text)
 	{this.ta.setText(text);}
+
+	@Override
+	public boolean isFilled() {
+		return !this.ta.getText().trim().equals("");
+	}
 }

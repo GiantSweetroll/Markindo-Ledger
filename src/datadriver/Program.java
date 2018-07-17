@@ -21,6 +21,10 @@ public class Program extends DataDriver
 	{
 		super(doc);
 	}
+	public Program()
+	{
+		super(Constants.PROGRAM_FOLDER_PATH, Constants.PROGRAM_FILE_EXTENSION);
+	}
 	
 	//Methods
 	public void setName(String name)

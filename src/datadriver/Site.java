@@ -12,7 +12,8 @@ public class Site extends DataDriver
 	//Constants
 	public static final String NAME = "name",
 								INFO = "info",
-								CODE = "code";
+								CODE = "code",
+								AREA = "area";
 	
 	//Constructors
 	public Site(String key)
@@ -49,6 +50,14 @@ public class Site extends DataDriver
 	{
 		return this.getData(Site.CODE);
 	}
+	public void setArea(String area)
+	{
+		this.setData(Site.AREA, area);
+	}
+	public String getArea()
+	{
+		return this.getData(Site.AREA);
+	}
 	
 	//Overridden Methods
 	@Override
@@ -57,6 +66,7 @@ public class Site extends DataDriver
 		List<String> list = new ArrayList<String>();
 		
 		list.add(this.getName());
+		list.add(this.getArea());
 		list.add(this.getInfo());
 		list.add(this.getCode());
 		

@@ -26,11 +26,15 @@ public class MainMenu extends JPanel implements ActionListener
 	private static final long serialVersionUID = 2586085524928657829L;
 	
 	private JPanel panelCenter, panelEntryButtons, panelBelow;
-	private JButton butExit, butAloc, butSend, butStock;
+	private JButton butExit, butAloc, butSend, butStock, butMisc;
 	private JLabel labLogo;
 	
 	//Constants
-	private final String EXIT = "exit", ALOKASI = "alokasi", PENGIRIMAN = "pengiriman", STOK = "stok";
+	private final String EXIT = "exit", 
+							ALOKASI = "alokasi",
+							PENGIRIMAN = "pengiriman", 
+							STOK = "stok",
+							MISC = "misc";
 
 	//Constructors
 	public MainMenu()
@@ -59,14 +63,18 @@ public class MainMenu extends JPanel implements ActionListener
 		//Initialization
 		this.panelBelow = new JPanel();
 		this.butExit = new JButton("Exit");
+		this.butMisc = new JButton("Lainnya");
 		
 		//Properties
 		this.panelBelow.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 		this.panelBelow.setOpaque(false);
 		this.butExit.setActionCommand(this.EXIT);
 		this.butExit.addActionListener(this);
+		this.butMisc.setActionCommand(this.MISC);
+		this.butMisc.addActionListener(this);
 		
 		//Add to panel
+		this.panelBelow.add(this.butMisc);
 		this.panelBelow.add(this.butExit);
 	}
 	private void initPanelEntryButtons()
@@ -140,6 +148,9 @@ public class MainMenu extends JPanel implements ActionListener
 				
 			case STOK:
 				MainFrame.changePanel(FramePanelConstants.STOCK_OVERVIEW);
+				break;
+				
+			case MISC:
 				break;
 		}
 	}
