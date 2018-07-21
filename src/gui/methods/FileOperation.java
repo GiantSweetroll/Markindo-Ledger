@@ -15,6 +15,9 @@ import org.xml.sax.SAXException;
 import constants.Constants;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
+import datadriver.PIC;
+import datadriver.Program;
+import datadriver.Site;
 import datadriver.Stock;
 import giantsweetroll.xml.dom.XMLManager;
 
@@ -57,6 +60,21 @@ public class FileOperation
 	public static List<Alokasi> loadAlokasi()
 	{
 		return (List<Alokasi>)loadDataDriver(Constants.ALOKASI_FOLDER_PATH, Constants.ALOKASI_FILE_EXTENSION);
+	}
+	
+	public static List<Site> loadSite()
+	{
+		return (List<Site>)loadDataDriver(Constants.SITE_FOLDER_PATH, Constants.SITE_FILE_EXTENSION);
+	}
+	
+	public static List<PIC> loadPIC()
+	{
+		return (List<PIC>)loadDataDriver(Constants.PIC_FOLDER_PATH, Constants.PIC_FILE_EXTENSION);
+	}
+	
+	public static List<Program> loadProgram()
+	{
+		return (List<Program>)loadDataDriver(Constants.PROGRAM_FOLDER_PATH, Constants.PROGRAM_FILE_EXTENSION);
 	}
 	
 	public static List<? extends DataDriver> loadDataDriver(String folderPath, String extension)

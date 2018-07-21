@@ -17,4 +17,5 @@ public class Constants
 	
 	public static final String[] STOCK_TABLE_HEADERS = {"Item", "Jumlah", "Tanggal Input", "Tanggal Modifikasi Terakhir"};
 	public static final String[] ALOKASI_TABLE_HEADERS = {"Program", "Site", "Item", "Alokasi"};
+	public static final String[] SITE_TABLE_HEADERS = {"Nama Site"};
 }

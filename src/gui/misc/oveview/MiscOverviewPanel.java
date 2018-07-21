@@ -1,4 +1,4 @@
-package gui.misc;
+package gui.misc.oveview;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import gui.misc.registration.MiscItemRegistration;
 import gui.table.OverviewTable;
 import gui.table.OverviewTablePanel;
 import interfaces.GUIMethods;
@@ -64,10 +65,21 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 		this.panelBelow.add(this.butAdd);
 	}
 	
+	//Public Methods
+	public MiscItemRegistration getRegistrationForm()
+	{
+		return this.reg;
+	}
+	
 	//Abstract Methods
 	public abstract void saveData();
 	
 	//Interfaces
+	@Override
+	public void resetDefaults()
+	{
+		this.overview.resetDefaults();
+	}
 	@Override
 	public void refresh()
 	{

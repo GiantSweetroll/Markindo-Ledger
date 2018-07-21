@@ -1,4 +1,4 @@
-package gui.misc;
+package gui.misc.registration;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;

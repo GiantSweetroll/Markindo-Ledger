@@ -1,4 +1,4 @@
-package gui.misc;
+package gui.misc.registration;
 
 import datadriver.Site;
 import input.InputLongText;

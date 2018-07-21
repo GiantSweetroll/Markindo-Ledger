@@ -1,6 +1,7 @@
-package gui.misc;
+package gui.misc.registration;
 
 import datadriver.DataDriver;
+import datadriver.Program;
 import input.InputText;
 
 public class ProgramRegistration extends MiscItemRegistration
@@ -29,21 +30,25 @@ public class ProgramRegistration extends MiscItemRegistration
 	}
 
 	@Override
-	public DataDriver getData() {
-		// TODO Auto-generated method stub
-		return null;
+	public DataDriver getData() 
+	{
+		Program prog = new Program(this.inputName.getData());
+		
+		prog.setName(this.inputName.getData());
+		
+		return prog;
 	}
 
 	@Override
-	public void resetDefaults() {
-		// TODO Auto-generated method stub
-		
+	public void resetDefaults()
+	{
+		this.inputName.resetDefaults();
 	}
 
 	@Override
-	public void refresh() {
-		// TODO Auto-generated method stub
-		
+	public void refresh() 
+	{
+		this.inputName.refresh();
 	}
 
 }
