@@ -99,6 +99,18 @@ public class FileOperation
 					{
 						list.add(new Alokasi(doc));
 					}
+					else if (extension.equals(Constants.PIC_FILE_EXTENSION))
+					{
+						list.add(new PIC(doc));
+					}
+					else if (extension.equals(Constants.PROGRAM_FILE_EXTENSION))
+					{
+						list.add(new Program(doc));
+					}
+					else if (extension.equals(Constants.SITE_FILE_EXTENSION))
+					{
+						list.add(new Site(doc));
+					}
 				} 
 				catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}
 			}

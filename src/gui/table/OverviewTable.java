@@ -32,7 +32,7 @@ public class OverviewTable extends JTable implements TableCellRenderer
 		
 		for (int i=0; i<this.getColumnCount(); i++)
 		{
-			this.getColumnModel().getColumn(i).setMinWidth(this.getColumnName(i).length()*10);
+			this.getColumnModel().getColumn(i).setMinWidth(this.getColumnName(i).length()*100);
 		}
 		
 		//Center align headers

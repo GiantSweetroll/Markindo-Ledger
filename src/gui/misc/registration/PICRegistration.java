@@ -43,9 +43,9 @@ public class PICRegistration extends MiscItemRegistration
 
 	@Override
 	public DataDriver getData() {
-		PIC pic = new PIC(this.inputName.getName());
+		PIC pic = new PIC(this.inputName.getData());
 		
-		pic.setName(this.inputName.getName());
+		pic.setName(this.inputName.getData());
 		
 		return pic;
 	}

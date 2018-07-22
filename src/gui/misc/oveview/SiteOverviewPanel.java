@@ -5,7 +5,6 @@ import datadriver.Site;
 import gui.methods.FileOperation;
 import gui.methods.Methods;
 import gui.misc.registration.SiteRegistration;
-import gui.table.OverviewTable;
 
 public class SiteOverviewPanel extends MiscOverviewPanel
 {
@@ -17,9 +16,8 @@ public class SiteOverviewPanel extends MiscOverviewPanel
 	public SiteOverviewPanel()
 	{
 		super("Site", 
-				new OverviewTable(
-						Methods.getDataForTable(FileOperation.loadSite()),
-						Methods.createTableHeaderWithActionCell(Constants.SITE_TABLE_HEADERS)),
+				Methods.getDataForTable(FileOperation.loadSite()),
+				Methods.createTableHeaderWithActionCell(Constants.SITE_TABLE_HEADERS),
 				new SiteRegistration());
 	}
 
@@ -30,5 +28,19 @@ public class SiteOverviewPanel extends MiscOverviewPanel
 		Site site = (Site)this.getRegistrationForm().getData();
 		
 		FileOperation.exportData(site);
+	}
+	
+	@Deprecated
+	@Override
+	public void resetDefaults()
+	{
+		this.getOveviewTablePanel().resetDefaults();
+	}
+
+	@Override
+	public void refresh() 
+	{
+		this.refresh(Methods.getDataForTable(FileOperation.loadSite()),
+						Methods.createTableHeaderWithActionCell(Constants.SITE_TABLE_HEADERS));
 	}
 }

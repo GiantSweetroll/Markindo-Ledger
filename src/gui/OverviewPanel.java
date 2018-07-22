@@ -8,7 +8,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import gui.search.SearchFilterPanel;
-import gui.table.OverviewTable;
 import gui.table.OverviewTablePanel;
 
 public class OverviewPanel extends JPanel
@@ -31,7 +30,7 @@ public class OverviewPanel extends JPanel
 		this.link = new PageHyperlinkBar(sectionName);
 		this.panelAddAData = new AddDataPanel(inputPanelConstant);
 		this.panelFilter = new SearchFilterPanel();
-		this.tablePanel = new OverviewTablePanel(new OverviewTable(data, tableHeaders));
+		this.tablePanel = new OverviewTablePanel(data, tableHeaders);
 		
 		//Properties
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -48,8 +47,16 @@ public class OverviewPanel extends JPanel
 	//Methods
 	public void setSearchFilterPanel(SearchFilterPanel searchFilterPanel)
 	{
+		this.remove(this.panelFilter);
+		this.remove(this.tablePanel);
 		this.panelFilter = searchFilterPanel;
+		this.add(this.panelFilter);
+		this.add(this.tablePanel);
 		this.revalidate();
 		this.repaint();
+	}
+	public void refresh(JComponent[][] components, String[] headers)
+	{
+		this.tablePanel.refresh(components, headers);
 	}
 }

@@ -2,6 +2,7 @@ package gui.table;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -18,10 +19,10 @@ public class OverviewTablePanel extends JPanel implements GUIMethods
 	private OverviewTable table;
 	private JScrollPane scroll;
 	
-	public OverviewTablePanel(OverviewTable table)
+	public OverviewTablePanel(JComponent[][] component, String[] headers)
 	{
 		//Initialization
-		this.table = table;
+		this.table = new OverviewTable(component, headers);
 		this.scroll = new JScrollPane(this.table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		//Properties
@@ -41,8 +42,16 @@ public class OverviewTablePanel extends JPanel implements GUIMethods
 	{
 		return scroll;
 	}
+	public void refresh(JComponent[][] components, String[] headers)
+	{
+		this.table = new OverviewTable(components, headers);
+		this.scroll.setViewportView(this.table);
+		this.revalidate();
+		this.repaint();
+	}
 	
 	//Overridden Methods
+	@Deprecated
 	@Override
 	public void resetDefaults() 
 	{
@@ -50,9 +59,7 @@ public class OverviewTablePanel extends JPanel implements GUIMethods
 		
 	}
 
+	@Deprecated
 	@Override
-	public void refresh() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void refresh() {}
 }

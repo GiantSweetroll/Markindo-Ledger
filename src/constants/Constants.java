@@ -10,7 +10,7 @@ public class Constants
 	public static final String PROGRAM_FILE_EXTENSION = ".prgm";
 	public static final String SITE_FOLDER_PATH = "./data/site/";
 	public static final String SITE_FILE_EXTENSION = ".site";
-	public static final String PIC_FOLDER_PATH = "./data/pic";
+	public static final String PIC_FOLDER_PATH = "./data/pic/";
 	public static final String PIC_FILE_EXTENSION = ".pic";
 	
 	public static final String ACTION_CELL_NAME = "Aksi";
@@ -18,4 +18,6 @@ public class Constants
 	public static final String[] STOCK_TABLE_HEADERS = {"Item", "Jumlah", "Tanggal Input", "Tanggal Modifikasi Terakhir"};
 	public static final String[] ALOKASI_TABLE_HEADERS = {"Program", "Site", "Item", "Alokasi"};
 	public static final String[] SITE_TABLE_HEADERS = {"Nama Site"};
+	public static final String[] PIC_TABLE_HEADERS = {"PIC"};
+	public static final String[] PROGRAM_TABLE_HEADERS = {"Program"};
 }

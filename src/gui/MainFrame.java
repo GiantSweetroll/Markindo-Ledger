@@ -28,6 +28,7 @@ public class MainFrame
 	private InputStock stockInput;
 	private InputAlokasi alokasiInput;
 	private SearchFilterPanel alokasiFilter;
+	private MiscPanel miscPanel;
 	
 	public MainFrame()
 	{
@@ -50,6 +51,7 @@ public class MainFrame
 		panel.add(this.stockInput, FramePanelConstants.STOCK_INPUT);
 		panel.add(this.alokasiOverview, FramePanelConstants.ALOKASI_OVERVIEW);
 		panel.add(this.alokasiInput, FramePanelConstants.ALOKASI_INPUT);
+		panel.add(this.miscPanel, FramePanelConstants.MISC);
 		
 		//Add to frame
 		frame.add(panel);
@@ -71,6 +73,7 @@ public class MainFrame
 													Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 		this.alokasiFilter = new SearchFilterPanel();
 		this.alokasiInput = new InputAlokasi();
+		this.miscPanel = new MiscPanel();
 		
 		//Properties
 		this.alokasiFilter.addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, new String[1]));

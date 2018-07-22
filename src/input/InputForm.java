@@ -17,6 +17,7 @@ import datadriver.DataDriver;
 import giantsweetroll.gui.swing.ScrollPaneManager;
 import giantsweetroll.message.MessageManager;
 import gui.MainFrame;
+import gui.OverviewPanel;
 import gui.methods.FileOperation;
 import interfaces.GUIMethods;
 
@@ -35,14 +36,16 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	private String prevPanelName, nextPanelName;
 	private JScrollPane scroll;
 	private boolean newEntry;
+	private OverviewPanel overviewPanel;
 	
 	//Constants
 	private final String CANCEL = "cancel";
 	private final String SAVE = "save";
 	
 	//Constructor
-	public InputForm(String formName, String prevPanelName, String nextPanelName)
+	public InputForm(String formName, String prevPanelName, String nextPanelName, OverviewPanel overviewPanel)
 	{
+		this.overviewPanel = overviewPanel;
 		this.init(formName, prevPanelName, nextPanelName);
 	}
 	//Create GUI
@@ -116,6 +119,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	//Abstract methods
 	public abstract DataDriver getData();
 	public abstract void setData(DataDriver data);
+	public abstract void refreshTable();
 	
 	//Interfaces
 	@Override

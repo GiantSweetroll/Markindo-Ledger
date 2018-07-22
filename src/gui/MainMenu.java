@@ -151,6 +151,7 @@ public class MainMenu extends JPanel implements ActionListener
 				break;
 				
 			case MISC:
+				MainFrame.changePanel(FramePanelConstants.MISC);
 				break;
 		}
 	}
