@@ -48,13 +48,38 @@ public class InputAlokasi extends InputForm
 	@Override
 	public Alokasi getData()
 	{
-		return null;
+		Alokasi alo = new Alokasi(this.program.getData() + this.item.getData());
+		
+		alo.setProgram(this.program.getData());
+		alo.setSite(this.site.getData());
+		alo.setItem(this.item.getData());
+		alo.setAmount(this.amount.getData());
+		alo.setItemInfo(this.itemInfo.getData());
+		alo.setPIC(this.pic.getData());
+		try
+		{
+			alo.setDateUpload(this.dateInput);
+		}
+		catch(NullPointerException ex)
+		{
+			alo.setDateUpload(new Date());
+		}
+		this.dateInput = null;
+		
+		return alo;
 	}
 
 	@Override
-	public void setData(DataDriver data) {
-		// TODO Auto-generated method stub
+	public void setData(DataDriver data)
+	{
+		Alokasi alo = (Alokasi)data;
 		
+		this.program.setData(alo.getProgram());
+		this.site.setData(alo.getSite());
+		this.item.setData(alo.getItem());
+		this.amount.setData(alo.getItemInfo());
+		this.pic.setData(alo.getPIC());
+		this.dateInput = alo.getUploadDate();
 	}
 
 }

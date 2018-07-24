@@ -1,0 +1,33 @@
+package gui.overviewpanel;
+
+import constants.Constants;
+import constants.FramePanelConstants;
+import gui.methods.FileOperation;
+import gui.methods.Methods;
+
+public class AlokasiOverview extends OverviewPanel
+{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5951592076700422987L;
+
+
+	public AlokasiOverview()
+	{
+		super("Alokasi", 
+				FramePanelConstants.ALOKASI_INPUT,
+				Methods.getDataForTable(FileOperation.loadAlokasi()), 
+				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
+	}
+	
+	
+	//Overridden Methods
+	@Override
+	public void refresh()
+	{
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(FileOperation.loadAlokasi()), 
+				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
+	}
+}

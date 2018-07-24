@@ -7,13 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import constants.Constants;
 import constants.FontConstants;
 import constants.FramePanelConstants;
 import giantsweetroll.GMisc;
 import gui.alokasi.InputAlokasi;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
+import gui.overviewpanel.AlokasiOverview;
+import gui.overviewpanel.StockOverview;
 import gui.search.SearchFilterItem;
 import gui.search.SearchFilterPanel;
 import stok.InputStock;
@@ -23,12 +22,13 @@ public class MainFrame
 	public static JFrame frame;
 	private static JPanel panel;
 	
-	private MainMenu mainMenu;
-	private OverviewPanel stockOverview, alokasiOverview;
-	private InputStock stockInput;
-	private InputAlokasi alokasiInput;
-	private SearchFilterPanel alokasiFilter;
-	private MiscPanel miscPanel;
+	public static MainMenu mainMenu;
+	public static StockOverview stockOverview;
+	public static AlokasiOverview alokasiOverview;
+	public static InputStock stockInput;
+	public static InputAlokasi alokasiInput;
+	public static SearchFilterPanel alokasiFilter;
+	public static MiscPanel miscPanel;
 	
 	public MainFrame()
 	{
@@ -62,15 +62,9 @@ public class MainFrame
 	{
 		//Initialization
 		this.mainMenu = new MainMenu();
-		this.stockOverview = new OverviewPanel("Stok", 
-												FramePanelConstants.STOCK_INPUT,
-												Methods.getDataForTable(FileOperation.loadStock()), 
-												Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
+		this.stockOverview = new StockOverview();
 		this.stockInput = new InputStock();
-		this.alokasiOverview = new OverviewPanel("Alokasi",
-													FramePanelConstants.ALOKASI_INPUT,
-													Methods.getDataForTable(FileOperation.loadAlokasi()),
-													Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
+		this.alokasiOverview = new AlokasiOverview();
 		this.alokasiFilter = new SearchFilterPanel();
 		this.alokasiInput = new InputAlokasi();
 		this.miscPanel = new MiscPanel();

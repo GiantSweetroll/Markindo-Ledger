@@ -26,12 +26,16 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 	 */
 	private static final long serialVersionUID = -6849167022933736649L;
 
-	private JButton butAdd;
+	private JButton butAdd, butRefresh;
 	private JLabel label;
 	private OverviewTablePanel overview;
 	private JPanel panelBelow;
 	private JScrollPane scroll;
 	private MiscItemRegistration reg;
+	
+	//Constants
+	private final String ADD = "add",
+							REFRESH = "refresh";
 	
 	//Constructor
 	public MiscOverviewPanel(String name, JComponent[][] components, String[] headers, MiscItemRegistration reg)
@@ -59,13 +63,18 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 		//Initialization
 		this.panelBelow = new JPanel();
 		this.butAdd = new JButton("Tambah");
+		this.butRefresh = new JButton("Refresh");
 		
 		//Properties
 		this.panelBelow.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.setOpaque(false);
 		this.butAdd.addActionListener(this);
+		this.butAdd.setActionCommand(this.ADD);
+		this.butRefresh.setActionCommand(this.REFRESH);
+		this.butRefresh.addActionListener(this);
 		
 		//Add to panel
+		this.panelBelow.add(this.butRefresh);
 		this.panelBelow.add(this.butAdd);
 	}
 	
@@ -91,25 +100,34 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		while(true)
+		switch(e.getActionCommand())
 		{
-			if (JOptionPane.showConfirmDialog(null, this.reg, "", JOptionPane.YES_NO_CANCEL_OPTION) != JOptionPane.YES_OPTION)
-			{
+			case ADD:
+				while(true)
+				{
+					if (JOptionPane.showConfirmDialog(null, this.reg, "", JOptionPane.YES_NO_CANCEL_OPTION) != JOptionPane.YES_OPTION)
+					{
+						break;
+					}
+					else
+					{
+						if (this.reg.allFilled())
+						{
+							this.saveData();
+							this.refresh();
+							break;
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Mohon isi semua data dengan tepat");
+						}
+					}
+				}
 				break;
-			}
-			else
-			{
-				if (this.reg.allFilled())
-				{
-					this.saveData();
-					this.refresh();
-					break;
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Mohon isi semua data dengan tepat");
-				}
-			}
+				
+			case REFRESH:
+				this.refresh();
+				break;
 		}
 	}
 }

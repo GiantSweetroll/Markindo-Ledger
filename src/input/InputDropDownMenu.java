@@ -1,5 +1,7 @@
 package input;
 
+import java.util.List;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -33,6 +35,10 @@ public class InputDropDownMenu extends FormElement
 	{
 		this.items = items;
 		this.refresh();
+	}
+	public void setItems(List<String> items)
+	{
+		this.setItems(items.toArray(new String[items.size()]));
 	}
 	public String[] getItems()
 	{
