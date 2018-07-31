@@ -4,7 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import datadriver.DataDriver;
-import input.FormElement;
+import gui.input.FormElement;
 import interfaces.GUIMethods;
 
 public abstract class MiscItemRegistration extends JPanel implements GUIMethods

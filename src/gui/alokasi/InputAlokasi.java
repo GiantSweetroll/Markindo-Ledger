@@ -1,14 +1,16 @@
 package gui.alokasi;
 
 import constants.FramePanelConstants;
+import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
 import giantsweetroll.date.Date;
-import input.InputAmount;
-import input.InputDropDownMenu;
-import input.InputForm;
-import input.InputLongText;
-import input.InputText;
+import gui.input.InputAmount;
+import gui.input.InputDropDownMenu;
+import gui.input.InputForm;
+import gui.input.InputLongText;
+import gui.input.InputText;
+import gui.methods.Methods;
 
 public class InputAlokasi extends InputForm
 {
@@ -27,13 +29,13 @@ public class InputAlokasi extends InputForm
 	{
 		super("Alokasi", FramePanelConstants.ALOKASI_OVERVIEW, FramePanelConstants.ALOKASI_OVERVIEW);
 	
-		this.program = new InputDropDownMenu("Nama Program", new String[1]);
-		this.site = new InputDropDownMenu("Site", new String[1]);
+		this.program = new InputDropDownMenu("Nama Program", Methods.getDisplayNames(Globals.PROGRAMS));
+		this.site = new InputDropDownMenu("Site", Methods.getDisplayNames(Globals.SITES));
 		this.siteInfo = new InputLongText("Deskripsi Site");
-		this.item = new InputDropDownMenu("Item", new String[1]);
+		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.STOCKS));
 		this.amount = new InputAmount("Jumlah");
 		this.itemInfo = new InputText("Keterangan Item");
-		this.pic = new InputDropDownMenu("PIC Shell", new String[1]);
+		this.pic = new InputDropDownMenu("PIC Shell", Methods.getDisplayNames(Globals.PICS));
 		
 		this.addFormElement(this.program);
 		this.addFormElement(this.site);
@@ -80,6 +82,16 @@ public class InputAlokasi extends InputForm
 		this.amount.setData(alo.getItemInfo());
 		this.pic.setData(alo.getPIC());
 		this.dateInput = alo.getUploadDate();
+	}
+
+	@Override
+	public boolean allFilled() 
+	{
+		return this.program.isFilled() && 
+				this.site.isFilled() && 
+				this.item.isFilled() && 
+				this.amount.isFilled() &&
+				this.pic.isFilled();
 	}
 
 }

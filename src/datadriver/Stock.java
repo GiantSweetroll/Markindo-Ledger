@@ -100,4 +100,9 @@ public class Stock extends DataDriver
 		
 		return list.toArray(new String[list.size()]);
 	}
+	@Override
+	public String getDisplayName() 
+	{
+		return this.getItemName();
+	}
 }

@@ -119,4 +119,5 @@ public abstract class DataDriver
 	
 	//Abstract Methods
 	public abstract String[] getDataArray();
+	public abstract String getDisplayName();
 }

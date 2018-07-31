@@ -2,7 +2,7 @@ package gui.overviewpanel;
 
 import constants.Constants;
 import constants.FramePanelConstants;
-import gui.methods.FileOperation;
+import constants.Globals;
 import gui.methods.Methods;
 
 public class AlokasiOverview extends OverviewPanel
@@ -18,7 +18,7 @@ public class AlokasiOverview extends OverviewPanel
 	{
 		super("Alokasi", 
 				FramePanelConstants.ALOKASI_INPUT,
-				Methods.getDataForTable(FileOperation.loadAlokasi()), 
+				Methods.getDataForTable(Globals.ALOKASI), 
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 	}
 	
@@ -27,7 +27,7 @@ public class AlokasiOverview extends OverviewPanel
 	@Override
 	public void refresh()
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(FileOperation.loadAlokasi()), 
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.ALOKASI), 
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 	}
 }

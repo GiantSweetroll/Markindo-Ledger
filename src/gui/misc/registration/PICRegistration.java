@@ -2,7 +2,7 @@ package gui.misc.registration;
 
 import datadriver.DataDriver;
 import datadriver.PIC;
-import input.InputText;
+import gui.input.InputText;
 
 public class PICRegistration extends MiscItemRegistration
 {

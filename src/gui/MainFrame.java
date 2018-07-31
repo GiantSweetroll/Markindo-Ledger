@@ -11,6 +11,7 @@ import constants.FontConstants;
 import constants.FramePanelConstants;
 import giantsweetroll.GMisc;
 import gui.alokasi.InputAlokasi;
+import gui.methods.Methods;
 import gui.overviewpanel.AlokasiOverview;
 import gui.overviewpanel.StockOverview;
 import gui.search.SearchFilterItem;
@@ -89,6 +90,9 @@ public class MainFrame
 		SwingUtilities.invokeLater(new Runnable() {
 				public void run()
 				{
+					//Intitalize Global Variables
+					Methods.reloadGlobalVariables();
+					
 					new MainFrame();
 					frame.setVisible(true);
 				}

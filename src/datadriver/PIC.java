@@ -43,5 +43,10 @@ public class PIC extends DataDriver
 		
 		return str;
 	}
+	@Override
+	public String getDisplayName() 
+	{
+		return this.getName();
+	}
 
 }

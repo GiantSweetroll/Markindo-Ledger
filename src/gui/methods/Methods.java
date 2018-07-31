@@ -10,6 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import constants.Constants;
+import constants.Globals;
 import datadriver.DataDriver;
 import giantsweetroll.date.Date;
 import giantsweetroll.xml.dom.XMLManager;
@@ -62,5 +63,25 @@ public class Methods
 		arr[arr.length-1] = Constants.ACTION_CELL_NAME;
 		
 		return arr;
+	}
+	
+	public static String[] getDisplayNames(List<? extends DataDriver> data)
+	{
+		String[] names = new String[data.size()];
+		for (int i=0; i<data.size(); i++)
+		{
+			names[i] = data.get(i).getDisplayName();
+		}
+		
+		return names;
+	}
+	
+	public static void reloadGlobalVariables()
+	{
+		Globals.reloadPIC();
+		Globals.reloadProgram();
+		Globals.reloadSite();
+		Globals.reloadStock();
+		Globals.reloadAlokasi();
 	}
 }

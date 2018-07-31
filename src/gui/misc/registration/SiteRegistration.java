@@ -1,8 +1,8 @@
 package gui.misc.registration;
 
 import datadriver.Site;
-import input.InputLongText;
-import input.InputText;
+import gui.input.InputLongText;
+import gui.input.InputText;
 
 public class SiteRegistration extends MiscItemRegistration
 {

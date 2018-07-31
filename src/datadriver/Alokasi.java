@@ -110,4 +110,9 @@ public class Alokasi extends DataDriver
 		
 		return list.toArray(new String[list.size()]);
 	}
+	@Override
+	public String getDisplayName() 
+	{
+		return this.getItem() + "-" + this.getProgram() + "-" + this.getAmount();
+	}
 }

@@ -4,9 +4,9 @@ import constants.FramePanelConstants;
 import datadriver.DataDriver;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
-import input.InputAmount;
-import input.InputForm;
-import input.InputText;
+import gui.input.InputAmount;
+import gui.input.InputForm;
+import gui.input.InputText;
 
 public class InputStock extends InputForm
 {
@@ -82,5 +82,11 @@ public class InputStock extends InputForm
 		
 		this.dateEnter = null;
 		this.dateMod = null;
+	}
+
+	@Override
+	public boolean allFilled() 
+	{
+		return this.itemName.isFilled() && this.itemCount.isFilled();
 	}
 }
