@@ -1,15 +1,21 @@
 package gui.alokasi;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+
 import constants.FramePanelConstants;
 import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
 import giantsweetroll.date.Date;
+import giantsweetroll.message.MessageManager;
 import gui.input.InputAmount;
 import gui.input.InputDropDownMenu;
 import gui.input.InputForm;
 import gui.input.InputLongText;
 import gui.input.InputText;
+import gui.methods.FileOperation;
 import gui.methods.Methods;
 
 public class InputAlokasi extends InputForm
@@ -44,6 +50,8 @@ public class InputAlokasi extends InputForm
 		this.addFormElement(this.amount);
 		this.addFormElement(this.itemInfo);
 		this.addFormElement(this.pic);
+		
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 
 	//Overridden Methods
@@ -94,4 +102,25 @@ public class InputAlokasi extends InputForm
 				this.pic.isFilled();
 	}
 
+	@Override
+	public void savingDataStarting() {}
+
+	@Override
+	public void savingDataClosing() 
+	{
+		FileOperation.exportData(Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData())));
+	}
+	
+	@Override
+	public boolean canExport()
+	{
+		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData())).getItemCount() ||
+				Long.parseLong(this.amount.getData()) <= 0)
+		{
+			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah alokasi tidak sesuai");
+			return false;
+		}
+		
+		return true;
+	}
 }

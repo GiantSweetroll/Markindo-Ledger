@@ -9,7 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import constants.Constants;
@@ -31,17 +30,25 @@ public class FileOperation
 			
 			if (!file.exists())
 			{
+				System.out.println(file.getParentFile().getAbsolutePath());
 				file.getParentFile().mkdirs();
 			}
 			
-			Document doc = data.getDocument();
-			List<Element> elements = XMLManager.getElements(doc.getDocumentElement().getChildNodes());
+//			Document doc = data.getDocument();
+//			List<Element> elements = XMLManager.getElements(doc.getDocumentElement().getChildNodes());
 //			System.out.println(elements.size());
 			
 			XMLManager.exportXML(data.getDocument(), file, 3);
 		} catch (TransformerException e) 
 		{
 			e.printStackTrace();
+		}
+	}
+	public static void exportData(List<? extends DataDriver> data)
+	{
+		for (int i=0; i<data.size(); i++)
+		{
+			FileOperation.exportData(data.get(i));
 		}
 	}
 	

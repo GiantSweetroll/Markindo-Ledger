@@ -84,4 +84,33 @@ public class Methods
 		Globals.reloadStock();
 		Globals.reloadAlokasi();
 	}
+	
+	public static int findDataIndexByDisplayName(List<? extends DataDriver> data, String displayName)
+	{
+		int a = -1;
+		for (int i=0; i<data.size(); i++)
+		{
+			if (data.get(i).getDisplayName().equals(displayName))
+			{
+				a = i;
+				break;
+			}
+		}
+		
+		return a;
+	}
+	public static int findDataIndexByKey(List<? extends DataDriver> data, String key)
+	{
+		int a = -1;
+		for (int i=0; i<data.size(); i++)
+		{
+			if (data.get(i).getKey().equals(key))
+			{
+				a = i;
+				break;
+			}
+		}
+		
+		return a;
+	}
 }

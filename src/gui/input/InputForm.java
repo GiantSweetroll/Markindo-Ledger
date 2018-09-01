@@ -118,6 +118,9 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	public abstract DataDriver getData();
 	public abstract void setData(DataDriver data);
 	public abstract boolean allFilled();
+	public abstract void savingDataStarting();
+	public abstract void savingDataClosing();
+	public abstract boolean canExport();
 	
 	//Interfaces
 	@Override
@@ -130,28 +133,34 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 				break;
 				
 			case SAVE:
-				DataDriver data = this.getData();
-				
-				if (FileOperation.dataExistsInDirectory(data))
+				if (this.canExport())
 				{
-					if (this.isNewEntry())
+					this.savingDataStarting();
+					DataDriver data = this.getData();
+					
+					if (FileOperation.dataExistsInDirectory(data))
 					{
-						MessageManager.showErrorDialog("Data sudah terdaftar. Silahkan coba lagi.", "Data sudah ada");
+						if (this.isNewEntry())
+						{
+							MessageManager.showErrorDialog("Data sudah terdaftar. Silahkan coba lagi.", "Data sudah ada");
+							break;
+						}
+						else
+						{
+							FileOperation.exportData(data);
+							MainFrame.changePanel(nextPanelName);
+						}
 					}
 					else
 					{
 						FileOperation.exportData(data);
 						MainFrame.changePanel(nextPanelName);
 					}
+					
+					this.savingDataClosing();
+					Methods.reloadGlobalVariables();
+					break;
 				}
-				else
-				{
-					FileOperation.exportData(data);
-					MainFrame.changePanel(nextPanelName);
-				}
-				
-				Methods.reloadGlobalVariables();
-				break;
 		}
 	}
 	

@@ -89,4 +89,13 @@ public class InputStock extends InputForm
 	{
 		return this.itemName.isFilled() && this.itemCount.isFilled();
 	}
+
+	@Override
+	public void savingDataStarting() {}
+
+	@Override
+	public void savingDataClosing() {}
+
+	@Override
+	public boolean canExport() {return true;}
 }
