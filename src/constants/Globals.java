@@ -8,7 +8,7 @@ import datadriver.PIC;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
-import gui.methods.FileOperation;
+import methods.FileOperation;
 
 public class Globals 
 {
@@ -63,5 +63,13 @@ public class Globals
 		{
 			Globals.ALOKASI.add(alok);
 		}
+	}
+	public static void reloadDataDrivers()
+	{
+		Globals.reloadAlokasi();
+		Globals.reloadPIC();
+		Globals.reloadProgram();
+		Globals.reloadSite();
+		Globals.reloadStock();
 	}
 }

@@ -15,25 +15,28 @@ import giantsweetroll.xml.dom.XMLManager;
 public abstract class DataDriver 
 {
 	private HashMap<String, String> dataMap;
-	private String folderPath, key, extension;
+	protected String folderPath, key, extension;
 	public static final String ROOT_NODE = "data";
 	
 	public DataDriver(String folderPath, String key, String extension)
 	{
 		this.folderPath = folderPath;
 		this.key = key;
-		this.dataMap = new HashMap<String, String>();
 		this.extension = extension;
+		this.dataMap = new HashMap<String, String>();
 	}
-	public DataDriver(Document doc)
+	public DataDriver(Document doc, String folderPath, String extension)
 	{
+		this.folderPath = folderPath;
+		this.extension = extension;
+		this.setKey("");
 		this.dataMap = new HashMap<String, String>();
 		this.setDocument(doc);
 	}
 	public DataDriver(String folderPath, String extension)
 	{
 		this.folderPath = folderPath;
-		this.key = "";
+		this.setKey("");
 		this.dataMap = new HashMap<String, String>();
 		this.extension = extension;
 	}

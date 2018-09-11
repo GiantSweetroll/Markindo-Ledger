@@ -2,9 +2,9 @@ package gui.misc.oveview;
 
 import constants.Constants;
 import datadriver.Program;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
 import gui.misc.registration.ProgramRegistration;
+import methods.FileOperation;
+import methods.Methods;
 
 public class ProgramOverviewPanel extends MiscOverviewPanel
 {

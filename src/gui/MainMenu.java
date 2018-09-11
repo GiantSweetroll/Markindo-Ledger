@@ -88,7 +88,7 @@ public class MainMenu extends JPanel implements ActionListener
 			private static final long serialVersionUID = 1324024801522805199L;
 
 			@Override
-			public Dimension getMaximumSize()			//Overriden to prevent height from being resized when component resizes
+			public Dimension getMaximumSize()			//Overridden to prevent height from being resized when component resizes
 			{
 				Dimension original = super.getMaximumSize();
 				

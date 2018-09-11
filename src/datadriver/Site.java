@@ -10,7 +10,8 @@ import constants.Constants;
 public class Site extends DataDriver
 {
 	//Constants
-	public static final String NAME = "name",
+	public static final String 	ID = "id",
+								NAME = "name",
 								INFO = "info",
 								AREA = "area";
 	
@@ -21,7 +22,7 @@ public class Site extends DataDriver
 	}
 	public Site(Document doc)
 	{
-		super(doc);
+		super(doc, Constants.SITE_FOLDER_PATH, Constants.SITE_FILE_EXTENSION);
 	}
 	
 	//Methods
@@ -49,6 +50,14 @@ public class Site extends DataDriver
 	{
 		return this.getData(Site.AREA);
 	}
+	public void setID(String id)
+	{
+		this.setData(Site.ID, id);
+	}
+	public String getID()
+	{
+		return this.getData(Site.ID);
+	}
 	
 	//Overridden Methods
 	@Override
@@ -56,6 +65,7 @@ public class Site extends DataDriver
 	{
 		List<String> list = new ArrayList<String>();
 		
+		list.add(this.getID());
 		list.add(this.getName());
 		list.add(this.getArea());
 		list.add(this.getInfo());

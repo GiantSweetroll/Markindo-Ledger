@@ -7,7 +7,7 @@ import org.w3c.dom.Document;
 
 import constants.Constants;
 import giantsweetroll.date.Date;
-import gui.methods.Methods;
+import methods.Methods;
 
 public class Stock extends DataDriver
 {
@@ -29,7 +29,8 @@ public class Stock extends DataDriver
 	}
 	public Stock(Document stockDoc)
 	{
-		super(stockDoc);
+		super(stockDoc, Constants.STOCK_FOLDER_PATH, Constants.STOCK_FILE_EXTENSION);
+		this.setKey(this.getItemName());
 	}
 	
 	//Methods

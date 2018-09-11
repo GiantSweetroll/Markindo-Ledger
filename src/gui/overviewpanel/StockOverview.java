@@ -3,7 +3,7 @@ package gui.overviewpanel;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
-import gui.methods.Methods;
+import methods.Methods;
 
 public class StockOverview extends OverviewPanel
 {

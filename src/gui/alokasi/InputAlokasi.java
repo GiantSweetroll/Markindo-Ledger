@@ -8,6 +8,7 @@ import constants.FramePanelConstants;
 import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
+import datadriver.Stock;
 import giantsweetroll.date.Date;
 import giantsweetroll.message.MessageManager;
 import gui.input.InputAmount;
@@ -15,8 +16,8 @@ import gui.input.InputDropDownMenu;
 import gui.input.InputForm;
 import gui.input.InputLongText;
 import gui.input.InputText;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
+import methods.FileOperation;
+import methods.Methods;
 
 public class InputAlokasi extends InputForm
 {
@@ -90,6 +91,8 @@ public class InputAlokasi extends InputForm
 		this.amount.setData(alo.getItemInfo());
 		this.pic.setData(alo.getPIC());
 		this.dateInput = alo.getUploadDate();
+		
+		this.setNewEntry(false);
 	}
 
 	@Override
@@ -108,7 +111,12 @@ public class InputAlokasi extends InputForm
 	@Override
 	public void savingDataClosing() 
 	{
-		FileOperation.exportData(Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData())));
+		Stock stock = Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData()));
+		if (this.isNewEntry())
+		{
+			stock.setItemCount(stock.getItemCount() - Long.parseLong(this.amount.getData()));
+		}
+		FileOperation.exportData(stock);
 	}
 	
 	@Override

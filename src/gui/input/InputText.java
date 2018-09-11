@@ -2,6 +2,8 @@ package gui.input;
 
 import javax.swing.JTextField;
 
+import methods.Methods;
+
 public class InputText extends FormElement
 {
 
@@ -15,13 +17,15 @@ public class InputText extends FormElement
 	//Constructor
 	public InputText(String name)
 	{
-		super(name);
-		
 		//Initialization
+		super(name);
 		this.tf = new JTextField("", 20);
 		
+		//Properties
+		Methods.autoLayout(this.getLayout(), this.tf, this.getTitleLabel(), this);
+		
 		//Add to panel
-		this.addComponent(this.tf);
+		this.add(this.tf);
 	}
 	
 	//Overriden Methods

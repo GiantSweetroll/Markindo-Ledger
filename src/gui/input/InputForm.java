@@ -17,9 +17,9 @@ import datadriver.DataDriver;
 import giantsweetroll.gui.swing.ScrollPaneManager;
 import giantsweetroll.message.MessageManager;
 import gui.MainFrame;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
 import interfaces.GUIMethods;
+import methods.FileOperation;
+import methods.Methods;
 
 public abstract class InputForm extends JPanel implements ActionListener, GUIMethods
 {

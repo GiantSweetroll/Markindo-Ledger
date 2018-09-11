@@ -3,6 +3,7 @@ package gui.input;
 import javax.swing.JTextArea;
 
 import giantsweetroll.gui.swing.TextAreaManager;
+import methods.Methods;
 
 public class InputLongText extends FormElement
 {
@@ -17,15 +18,16 @@ public class InputLongText extends FormElement
 	//Constructor
 	public InputLongText(String name)
 	{
-		super(name);
 		//Initialization
+		super(name);
 		this.ta = new JTextArea(15, 20);
 		
 		//Properties
 		TextAreaManager.autoConfigureTextArea(this.ta, true);
+		Methods.autoLayout(this.getLayout(), ta, this.getTitleLabel(), this);
 		
 		//Add to panel
-		this.addComponent(this.ta);
+		this.add(this.ta);
 	}
 	
 	//Overriden Methods

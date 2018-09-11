@@ -19,7 +19,7 @@ public class Program extends DataDriver
 	}
 	public Program(Document doc)
 	{
-		super(doc);
+		super(doc, Constants.PROGRAM_FOLDER_PATH, Constants.PROGRAM_FILE_EXTENSION);
 	}
 	public Program()
 	{

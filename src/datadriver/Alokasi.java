@@ -28,7 +28,7 @@ public class Alokasi extends DataDriver
 	}
 	public Alokasi(Document doc)
 	{
-		super(doc);
+		super(doc, Constants.ALOKASI_FOLDER_PATH, Constants.ALOKASI_FILE_EXTENSION);
 	}
 	
 	//Methods

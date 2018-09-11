@@ -16,7 +16,7 @@ public class PIC extends DataDriver
 	}
 	public PIC(Document doc)
 	{
-		super(doc);
+		super(doc, Constants.PIC_FOLDER_PATH, Constants.PIC_FILE_EXTENSION);
 	}
 	public PIC()
 	{

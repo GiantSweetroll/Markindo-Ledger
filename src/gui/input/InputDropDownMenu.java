@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.SpringLayout;
 
 import giantsweetroll.GMisc;
+import methods.Methods;
 
 public class InputDropDownMenu extends FormElement
 {
@@ -25,9 +27,13 @@ public class InputDropDownMenu extends FormElement
 		//Initialization
 		this.combo = new JComboBox<String>(items);
 		this.items = items;
+		SpringLayout layout = this.getLayout();
+		
+		//Properties
+		Methods.autoLayout(layout, this.combo, this.getTitleLabel(), this);
 		
 		//Add to panel
-		this.addComponent(this.combo);
+		this.add(this.combo);
 	}
 	
 	//Methods

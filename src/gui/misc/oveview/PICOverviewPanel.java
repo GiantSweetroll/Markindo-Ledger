@@ -2,9 +2,9 @@ package gui.misc.oveview;
 
 import constants.Constants;
 import datadriver.PIC;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
 import gui.misc.registration.PICRegistration;
+import methods.FileOperation;
+import methods.Methods;
 
 public class PICOverviewPanel extends MiscOverviewPanel
 {

@@ -11,11 +11,11 @@ import constants.FontConstants;
 import constants.FramePanelConstants;
 import giantsweetroll.GMisc;
 import gui.alokasi.InputAlokasi;
-import gui.methods.Methods;
 import gui.overviewpanel.AlokasiOverview;
 import gui.overviewpanel.StockOverview;
 import gui.search.SearchFilterItem;
 import gui.search.SearchFilterPanel;
+import methods.Methods;
 import stok.InputStock;
 
 public class MainFrame
@@ -90,7 +90,7 @@ public class MainFrame
 		SwingUtilities.invokeLater(new Runnable() {
 				public void run()
 				{
-					//Intitalize Global Variables
+					//Initialize Global Variables
 					Methods.reloadGlobalVariables();
 					
 					new MainFrame();

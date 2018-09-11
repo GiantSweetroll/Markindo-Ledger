@@ -2,9 +2,9 @@ package gui.misc.oveview;
 
 import constants.Constants;
 import datadriver.Site;
-import gui.methods.FileOperation;
-import gui.methods.Methods;
 import gui.misc.registration.SiteRegistration;
+import methods.FileOperation;
+import methods.Methods;
 
 public class SiteOverviewPanel extends MiscOverviewPanel
 {

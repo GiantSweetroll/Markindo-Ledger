@@ -1,9 +1,11 @@
 package gui.input;
 
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
 import giantsweetroll.filters.LongFilter;
 import giantsweetroll.gui.swing.GTextField;
+import methods.Methods;
 
 public class InputAmount extends FormElement
 {
@@ -21,12 +23,16 @@ public class InputAmount extends FormElement
 		super(name);
 		//Initialization
 		this.tf = new GTextField("", 20, new LongFilter(1L, Long.MAX_VALUE));
+		SpringLayout layout = this.getLayout();
+		
+		//Properties
+		Methods.autoLayout(layout, this.tf, this.getTitleLabel(), this);
 		
 		//Add to panel
-		this.addComponent(this.tf);
+		this.add(this.tf);
 	}
 	
-	//Overriden Methods
+	//Overridden Methods
 	@Override
 	public void setEnabled(boolean enabled)
 	{
