@@ -117,6 +117,8 @@ public class InputAlokasi extends InputForm
 			stock.setItemCount(stock.getItemCount() - Long.parseLong(this.amount.getData()));
 		}
 		FileOperation.exportData(stock);
+		Globals.stockOverview.refresh();
+		Globals.alokasiOverview.refresh();
 	}
 	
 	@Override

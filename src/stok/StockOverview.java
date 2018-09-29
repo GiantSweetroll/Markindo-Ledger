@@ -1,8 +1,9 @@
-package gui.overviewpanel;
+package stok;
 
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import gui.overviewpanel.OverviewPanel;
 import methods.Methods;
 
 public class StockOverview extends OverviewPanel

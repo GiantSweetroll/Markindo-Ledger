@@ -69,6 +69,11 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 		return this.tablePanel;
 	}
 	
+	public SearchFilterPanel getSearchFilterPanel()
+	{
+		return this.panelFilter;
+	}
+	
 	//Abstract Methods
 	public abstract void refresh();
 	

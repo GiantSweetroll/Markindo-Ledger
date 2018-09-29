@@ -8,7 +8,13 @@ import datadriver.PIC;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
+import gui.MainMenu;
+import gui.MiscPanel;
+import gui.alokasi.AlokasiOverview;
+import gui.alokasi.InputAlokasi;
 import methods.FileOperation;
+import stok.InputStock;
+import stok.StockOverview;
 
 public class Globals 
 {
@@ -17,6 +23,13 @@ public class Globals
 	public static final List<Site> SITES = new ArrayList<Site>();
 	public static final List<Stock> STOCKS = new ArrayList<Stock>();
 	public static final List<Alokasi> ALOKASI = new ArrayList<Alokasi>();
+	
+	public static MainMenu mainMenu;
+	public static StockOverview stockOverview;
+	public static AlokasiOverview alokasiOverview;
+	public static InputStock stockInput;
+	public static InputAlokasi alokasiInput;
+	public static MiscPanel miscPanel;
 	
 	//Methods
 	public static void reloadProgram()

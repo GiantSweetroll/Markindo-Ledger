@@ -9,27 +9,18 @@ import javax.swing.SwingUtilities;
 
 import constants.FontConstants;
 import constants.FramePanelConstants;
+import constants.Globals;
 import giantsweetroll.GMisc;
+import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
-import gui.overviewpanel.AlokasiOverview;
-import gui.overviewpanel.StockOverview;
-import gui.search.SearchFilterItem;
-import gui.search.SearchFilterPanel;
 import methods.Methods;
 import stok.InputStock;
+import stok.StockOverview;
 
 public class MainFrame
 {
 	public static JFrame frame;
 	private static JPanel panel;
-	
-	public static MainMenu mainMenu;
-	public static StockOverview stockOverview;
-	public static AlokasiOverview alokasiOverview;
-	public static InputStock stockInput;
-	public static InputAlokasi alokasiInput;
-	public static SearchFilterPanel alokasiFilter;
-	public static MiscPanel miscPanel;
 	
 	public MainFrame()
 	{
@@ -47,12 +38,12 @@ public class MainFrame
 		panel.setLayout(new CardLayout());
 		
 		//Add to panel
-		panel.add(this.mainMenu, FramePanelConstants.MAIN_MENU);
-		panel.add(this.stockOverview, FramePanelConstants.STOCK_OVERVIEW);
-		panel.add(this.stockInput, FramePanelConstants.STOCK_INPUT);
-		panel.add(this.alokasiOverview, FramePanelConstants.ALOKASI_OVERVIEW);
-		panel.add(this.alokasiInput, FramePanelConstants.ALOKASI_INPUT);
-		panel.add(this.miscPanel, FramePanelConstants.MISC);
+		panel.add(Globals.mainMenu, FramePanelConstants.MAIN_MENU);
+		panel.add(Globals.stockOverview, FramePanelConstants.STOCK_OVERVIEW);
+		panel.add(Globals.stockInput, FramePanelConstants.STOCK_INPUT);
+		panel.add(Globals.alokasiOverview, FramePanelConstants.ALOKASI_OVERVIEW);
+		panel.add(Globals.alokasiInput, FramePanelConstants.ALOKASI_INPUT);
+		panel.add(Globals.miscPanel, FramePanelConstants.MISC);
 		
 		//Add to frame
 		frame.add(panel);
@@ -62,20 +53,12 @@ public class MainFrame
 	public void initComponents()
 	{
 		//Initialization
-		this.mainMenu = new MainMenu();
-		this.stockOverview = new StockOverview();
-		this.stockInput = new InputStock();
-		this.alokasiOverview = new AlokasiOverview();
-		this.alokasiFilter = new SearchFilterPanel();
-		this.alokasiInput = new InputAlokasi();
-		this.miscPanel = new MiscPanel();
-		
-		//Properties
-		this.alokasiFilter.addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, new String[1]));
-		this.alokasiFilter.addFilter(new SearchFilterItem("Area", SearchFilterItem.AREA, new String[1]));
-		this.alokasiFilter.addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, new String[1]));
-		this.alokasiFilter.addFilter(new SearchFilterItem("PIC", SearchFilterItem.PIC, new String[1]));
-		this.alokasiOverview.setSearchFilterPanel(this.alokasiFilter);
+		Globals.mainMenu = new MainMenu();
+		Globals.stockOverview = new StockOverview();
+		Globals.stockInput = new InputStock();
+		Globals.alokasiOverview = new AlokasiOverview();
+		Globals.alokasiInput = new InputAlokasi();
+		Globals.miscPanel = new MiscPanel();
 	}
 	
 	public static void changePanel(String keyword)
