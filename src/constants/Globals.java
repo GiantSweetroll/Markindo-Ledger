@@ -12,6 +12,8 @@ import gui.MainMenu;
 import gui.MiscPanel;
 import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
+import gui.pengiriman.InputPengiriman;
+import gui.pengiriman.PengirimanOverview;
 import methods.FileOperation;
 import stok.InputStock;
 import stok.StockOverview;
@@ -27,8 +29,10 @@ public class Globals
 	public static MainMenu mainMenu;
 	public static StockOverview stockOverview;
 	public static AlokasiOverview alokasiOverview;
+	public static PengirimanOverview pengirimanOverview;
 	public static InputStock stockInput;
 	public static InputAlokasi alokasiInput;
+	public static InputPengiriman pengirimanInput;
 	public static MiscPanel miscPanel;
 	
 	//Methods

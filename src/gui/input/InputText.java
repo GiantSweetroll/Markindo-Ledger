@@ -28,7 +28,6 @@ public class InputText extends FormElement
 		this.add(this.tf);
 	}
 	
-	//Overriden Methods
 	@Override
 	public void setEnabled(boolean enabled)
 	{

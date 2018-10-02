@@ -144,6 +144,7 @@ public class MainMenu extends JPanel implements ActionListener
 				break;
 			
 			case PENGIRIMAN:
+				MainFrame.changePanel(FramePanelConstants.PENGIRIMAN_OVERVIEW);
 				break;
 				
 			case STOK:
