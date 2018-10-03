@@ -5,6 +5,7 @@ import java.util.List;
 
 import datadriver.Alokasi;
 import datadriver.PIC;
+import datadriver.Pengiriman;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
@@ -25,6 +26,7 @@ public class Globals
 	public static final List<Site> SITES = new ArrayList<Site>();
 	public static final List<Stock> STOCKS = new ArrayList<Stock>();
 	public static final List<Alokasi> ALOKASI = new ArrayList<Alokasi>();
+	public static final List<Pengiriman> PENGIRIMAN = new ArrayList<Pengiriman>();
 	
 	public static MainMenu mainMenu;
 	public static StockOverview stockOverview;
@@ -81,6 +83,15 @@ public class Globals
 			Globals.ALOKASI.add(alok);
 		}
 	}
+	public static void reloadPengiriman()
+	{
+		Globals.PENGIRIMAN.clear();
+		List<Pengiriman> pengiriman = FileOperation.loadPengiriman();
+		for (Pengiriman send : pengiriman)
+		{
+			Globals.PENGIRIMAN.add(send);
+		}
+	}
 	public static void reloadDataDrivers()
 	{
 		Globals.reloadAlokasi();
@@ -88,5 +99,6 @@ public class Globals
 		Globals.reloadProgram();
 		Globals.reloadSite();
 		Globals.reloadStock();
+		Globals.reloadPengiriman();
 	}
 }

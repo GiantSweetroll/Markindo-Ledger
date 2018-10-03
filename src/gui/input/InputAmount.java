@@ -26,6 +26,7 @@ public class InputAmount extends FormElement
 		SpringLayout layout = this.getLayout();
 		
 		//Properties
+		this.tf.addActionListener(this);
 		Methods.autoLayout(layout, this.tf, this.getTitleLabel(), this);
 		
 		//Add to panel

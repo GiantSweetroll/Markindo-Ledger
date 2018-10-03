@@ -22,6 +22,7 @@ public class InputText extends FormElement
 		this.tf = new JTextField("", 20);
 		
 		//Properties
+		this.tf.addActionListener(this);
 		Methods.autoLayout(this.getLayout(), this.tf, this.getTitleLabel(), this);
 		
 		//Add to panel

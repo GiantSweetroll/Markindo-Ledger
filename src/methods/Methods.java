@@ -85,6 +85,7 @@ public class Methods
 		Globals.reloadSite();
 		Globals.reloadStock();
 		Globals.reloadAlokasi();
+		Globals.reloadPengiriman();
 	}
 	
 	public static int findDataIndexByDisplayName(List<? extends DataDriver> data, String displayName)

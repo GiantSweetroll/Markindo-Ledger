@@ -15,6 +15,7 @@ import constants.Constants;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
 import datadriver.PIC;
+import datadriver.Pengiriman;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
@@ -79,6 +80,11 @@ public class FileOperation
 		return (List<Program>)loadDataDriver(Constants.PROGRAM_FOLDER_PATH, Constants.PROGRAM_FILE_EXTENSION);
 	}
 	
+	public static List<Pengiriman> loadPengiriman()
+	{
+		return (List<Pengiriman>)loadDataDriver(Constants.PENGIRIMAN_FOLDER_PATH, Constants.PENGIRIMAN_FILE_EXTENSION);
+	}
+	
 	public static List<? extends DataDriver> loadDataDriver(String folderPath, String extension)
 	{
 		List<DataDriver> list = new ArrayList<DataDriver>();
@@ -88,10 +94,15 @@ public class FileOperation
 			File folder = new File(folderPath);
 			File[] files = folder.listFiles();
 			
+			
 			for (File file : files)
 			{
-				try 
+				if(file.isDirectory())
 				{
+					continue;
+				}
+				try 
+				{					
 					Document doc = XMLManager.createDocument(file.getAbsolutePath(), false);
 					if(extension.equals(Constants.STOCK_FILE_EXTENSION))
 					{
@@ -112,6 +123,10 @@ public class FileOperation
 					else if (extension.equals(Constants.SITE_FILE_EXTENSION))
 					{
 						list.add(new Site(doc));
+					}
+					else if (extension.equals(Constants.PENGIRIMAN_FILE_EXTENSION))
+					{
+						list.add(new Pengiriman(doc));
 					}
 				} 
 				catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}

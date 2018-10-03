@@ -30,6 +30,7 @@ public class InputDropDownMenu extends FormElement
 		SpringLayout layout = this.getLayout();
 		
 		//Properties
+		this.combo.addActionListener(this);
 		Methods.autoLayout(layout, this.combo, this.getTitleLabel(), this);
 		
 		//Add to panel
@@ -50,8 +51,16 @@ public class InputDropDownMenu extends FormElement
 	{
 		return this.items;
 	}
+	public void setSelectedIndex(int index)
+	{
+		this.combo.setSelectedIndex(index);
+	}
+	public int getSelectedIndex()
+	{
+		return this.combo.getSelectedIndex();
+	}
 	
-	//Overriden Methods
+	//Overridden Methods
 	@Override
 	public void setEnabled(boolean enabled)
 	{

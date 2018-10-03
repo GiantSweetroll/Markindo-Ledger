@@ -66,7 +66,7 @@ public class Pengiriman extends DataDriver
 	}
 	public void setAmount(String amount)
 	{
-		this.getData(Pengiriman.AMOUNT);
+		this.setData(Pengiriman.AMOUNT, amount);
 	}
 	public long getAmount()
 	{

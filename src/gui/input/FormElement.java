@@ -1,6 +1,7 @@
 package gui.input;
 
-import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,9 +10,8 @@ import javax.swing.SwingConstants;
 
 import constants.InsetsConstants;
 import interfaces.GUIMethods;
-import methods.Methods;
 
-public abstract class FormElement extends JPanel implements GUIMethods
+public abstract class FormElement extends JPanel implements GUIMethods, ActionListener
 {
 	/**
 	 * 
@@ -50,6 +50,10 @@ public abstract class FormElement extends JPanel implements GUIMethods
 	{
 		return this.layout;
 	}
+	
+	//Interface
+	@Override
+	public void actionPerformed(ActionEvent e) {}
 	
 	//Abstract Methods
 	public abstract boolean isFilled();

@@ -19,7 +19,7 @@ public class PengirimanOverview extends OverviewPanel
 	{
 		super("Pengiriman", 
 				FramePanelConstants.PENGIRIMAN_INPUT,
-				Methods.getDataForTable(Globals.ALOKASI), 
+				Methods.getDataForTable(Globals.PENGIRIMAN), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 		
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Methods.getDisplayNames(Globals.PROGRAMS)));
@@ -33,7 +33,7 @@ public class PengirimanOverview extends OverviewPanel
 	@Override
 	public void refresh()
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.ALOKASI), 
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.PENGIRIMAN), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 	}
 }
