@@ -10,9 +10,9 @@ public class PIC extends DataDriver
 	public static final String NAME = "name";
 	
 	//Constructors
-	public PIC(String key)
+	public PIC(String name)
 	{
-		super(Constants.PIC_FOLDER_PATH, key, Constants.PIC_FILE_EXTENSION);
+		super(Constants.PIC_FOLDER_PATH, name, Constants.PIC_FILE_EXTENSION);
 	}
 	public PIC(Document doc)
 	{
@@ -44,7 +44,7 @@ public class PIC extends DataDriver
 		return str;
 	}
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
 		return this.getName();
 	}

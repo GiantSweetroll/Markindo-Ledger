@@ -59,14 +59,10 @@ public class InputAlokasi extends InputForm
 	@Override
 	public Alokasi getData()
 	{
-		Alokasi alo = new Alokasi(this.program.getData() + this.item.getData());
+		Alokasi alo = new Alokasi(this.program.getData(), this.site.getData(), this.pic.getData(), this.item.getData());
 		
-		alo.setProgram(this.program.getData());
-		alo.setSite(this.site.getData());
-		alo.setItem(this.item.getData());
 		alo.setAmount(this.amount.getData());
 		alo.setItemInfo(this.itemInfo.getData());
-		alo.setPIC(this.pic.getData());
 		try
 		{
 			alo.setDateUpload(this.dateInput);

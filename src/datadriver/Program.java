@@ -13,9 +13,9 @@ public class Program extends DataDriver
 	public static final String NAME = "name";
 	
 	//Constructors
-	public Program(String key)
+	public Program(String name)
 	{
-		super(Constants.PROGRAM_FOLDER_PATH, key, Constants.PROGRAM_FILE_EXTENSION);
+		super(Constants.PROGRAM_FOLDER_PATH, name, Constants.PROGRAM_FILE_EXTENSION);
 	}
 	public Program(Document doc)
 	{
@@ -47,7 +47,7 @@ public class Program extends DataDriver
 		return list.toArray(new String[list.size()]);
 	}
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
 		return this.getName();
 	}

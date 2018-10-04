@@ -27,11 +27,11 @@ public abstract class DataDriver
 	}
 	public DataDriver(Document doc, String folderPath, String extension)
 	{
+		this.dataMap = new HashMap<String, String>();
+		this.setDocument(doc);
 		this.folderPath = folderPath;
 		this.extension = extension;
 		this.setKey("");
-		this.dataMap = new HashMap<String, String>();
-		this.setDocument(doc);
 	}
 	public DataDriver(String folderPath, String extension)
 	{
@@ -117,10 +117,9 @@ public abstract class DataDriver
 	}
 	public String getFileFullPath()
 	{
-		return this.folderPath + this.getFileName();
+		return this.getFolderPath() + this.getFileName();
 	}
 	
 	//Abstract Methods
 	public abstract String[] getDataArray();
-	public abstract String getDisplayName();
 }

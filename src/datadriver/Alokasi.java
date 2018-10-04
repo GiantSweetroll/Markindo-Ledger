@@ -22,13 +22,20 @@ public class Alokasi extends DataDriver
 								DATE_UPLOAD_YEAR = "upload_year";
 	
 	//Constructor
-	public Alokasi(String key)
+	public Alokasi(String program, String siteID, String pic, String itemName)
 	{
-		super(Constants.ALOKASI_FOLDER_PATH, key, Constants.ALOKASI_FILE_EXTENSION);
+		super(Constants.ALOKASI_FOLDER_PATH + program + "/" + siteID + "/" + pic + "/", itemName, Constants.ALOKASI_FILE_EXTENSION);
+		
+		this.setProgram(program);
+		this.setSite(siteID);
+		this.setPIC(pic);
+		this.setItem(itemName);
 	}
 	public Alokasi(Document doc)
 	{
 		super(doc, Constants.ALOKASI_FOLDER_PATH, Constants.ALOKASI_FILE_EXTENSION);
+		
+		this.setFolderPath(Constants.ALOKASI_FOLDER_PATH + this.getProgram() + "/" + this.getSite() + "/" + this.getPIC() + "/");
 	}
 	
 	//Methods
@@ -111,8 +118,8 @@ public class Alokasi extends DataDriver
 		return list.toArray(new String[list.size()]);
 	}
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
-		return this.getItem() + "-" + this.getProgram();
+		return this.getItem();
 	}
 }

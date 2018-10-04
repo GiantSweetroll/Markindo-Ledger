@@ -98,27 +98,17 @@ public class InputPengiriman extends InputForm
 	//Overridden Methods
 	@Override
 	public DataDriver getData() 
-	{
-		Date date = this.datePengiriman.getDate();
-		String key = date.getDay() + "-" +
-						date.getMonth() + "-" +
-						date.getYear() +
-						this.program.getData() +
-						this.site.getData() +
-						this.item.getData() +
-						this.sender.getData();
-		
-		Pengiriman send = new Pengiriman(key);
+	{		
+		Pengiriman send = new Pengiriman(this.program.getData(),
+											this.site.getData(),
+											this.datePengiriman.getDate());
 		
 		send.setDateUpload(new Date());
-		send.setProgram(this.program.getData());
 		send.setItemName(this.item.getData());
-		send.setSite(this.site.getData());
 		send.setAmount(this.itemCount.getData());
 		send.setSender(this.sender.getData());
 		send.setReceiver(this.penerima.getData());
 		send.setInfoFromSite(this.infoFromSite.getData());
-		send.setDateSent(this.datePengiriman.getDate());
 		
 		return send;
 	}

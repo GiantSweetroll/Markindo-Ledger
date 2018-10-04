@@ -72,7 +72,7 @@ public class Methods
 		String[] names = new String[data.size()];
 		for (int i=0; i<data.size(); i++)
 		{
-			names[i] = data.get(i).getDisplayName();
+			names[i] = data.get(i).toString();
 		}
 		
 		return names;
@@ -93,7 +93,7 @@ public class Methods
 		int a = -1;
 		for (int i=0; i<data.size(); i++)
 		{
-			if (data.get(i).getDisplayName().equals(displayName))
+			if (data.get(i).toString().equals(displayName))
 			{
 				a = i;
 				break;

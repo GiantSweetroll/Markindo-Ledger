@@ -8,6 +8,7 @@ import javax.swing.SpringLayout;
 
 import giantsweetroll.GMisc;
 import methods.Methods;
+import renderers.ComboBoxObjectRenderer;
 
 public class InputDropDownMenu extends FormElement
 {
@@ -17,20 +18,21 @@ public class InputDropDownMenu extends FormElement
 	 */
 	private static final long serialVersionUID = -2019725509813089625L;
 
-	private JComboBox<String> combo;
-	private String[] items;
+	private JComboBox<Object> combo;
+	private Object[] items;
 	
-	public InputDropDownMenu(String name, String[] items)
+	public InputDropDownMenu(String name, Object[] items)
 	{
 		super(name);
 		
 		//Initialization
-		this.combo = new JComboBox<String>(items);
+		this.combo = new JComboBox<Object>(items);
 		this.items = items;
 		SpringLayout layout = this.getLayout();
 		
 		//Properties
 		this.combo.addActionListener(this);
+		this.combo.setRenderer(new ComboBoxObjectRenderer());
 		Methods.autoLayout(layout, this.combo, this.getTitleLabel(), this);
 		
 		//Add to panel
@@ -47,7 +49,7 @@ public class InputDropDownMenu extends FormElement
 	{
 		this.setItems(items.toArray(new String[items.size()]));
 	}
-	public String[] getItems()
+	public Object[] getItems()
 	{
 		return this.items;
 	}
@@ -75,7 +77,7 @@ public class InputDropDownMenu extends FormElement
 	@Override
 	public void refresh() 
 	{
-		this.combo.setModel(new DefaultComboBoxModel<String>(this.items));
+		this.combo.setModel(new DefaultComboBoxModel<Object>(this.items));
 		this.revalidate();
 		this.repaint();
 	}

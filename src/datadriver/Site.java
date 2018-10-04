@@ -6,6 +6,7 @@ import java.util.List;
 import org.w3c.dom.Document;
 
 import constants.Constants;
+import methods.IDGenerator;
 
 public class Site extends DataDriver
 {
@@ -16,13 +17,18 @@ public class Site extends DataDriver
 								AREA = "area";
 	
 	//Constructors
-	public Site(String key)
+	public Site(String area)
 	{
-		super(Constants.SITE_FOLDER_PATH, key, Constants.SITE_FILE_EXTENSION);
+		super(Constants.SITE_FOLDER_PATH, Constants.SITE_FILE_EXTENSION);
+	
+		this.setArea(area);
+		this.setID(IDGenerator.generate(IDGenerator.SITE));
+		this.setFolderPath(Constants.SITE_FOLDER_PATH + this.getArea() + "/");
 	}
 	public Site(Document doc)
 	{
 		super(doc, Constants.SITE_FOLDER_PATH, Constants.SITE_FILE_EXTENSION);
+		this.setFolderPath(Constants.SITE_FOLDER_PATH + this.getArea() + "/");
 	}
 	
 	//Methods
@@ -73,8 +79,13 @@ public class Site extends DataDriver
 		return list.toArray(new String[list.size()]);
 	}
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
 		return this.getName();
+	}
+	@Override
+	public String getKey()
+	{
+		return this.getID();
 	}
 }

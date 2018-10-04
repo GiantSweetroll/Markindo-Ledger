@@ -23,9 +23,9 @@ public class Stock extends DataDriver
 								DATE_FIRST_ENTERED_YEAR = "first_entered_year";
 	
 	
-	public Stock(String key)
+	public Stock(String itemName)
 	{
-		super(Constants.STOCK_FOLDER_PATH, key, Constants.STOCK_FILE_EXTENSION);
+		super(Constants.STOCK_FOLDER_PATH, itemName, Constants.STOCK_FILE_EXTENSION);
 	}
 	public Stock(Document stockDoc)
 	{
@@ -102,7 +102,7 @@ public class Stock extends DataDriver
 		return list.toArray(new String[list.size()]);
 	}
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
 		return this.getItemName();
 	}

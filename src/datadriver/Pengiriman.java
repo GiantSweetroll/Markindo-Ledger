@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 
 import constants.Constants;
 import giantsweetroll.date.Date;
+import methods.IDGenerator;
 import methods.Methods;
 
 public class Pengiriman extends DataDriver
@@ -23,16 +24,33 @@ public class Pengiriman extends DataDriver
 								INFO_FROM_SITE = "info_from_site",
 								DATE_SENT_DAY = "sent_day",
 								DATE_SENT_MONTH = "sent_month",
-								DATE_SENT_YEAR = "sent_year";
+								DATE_SENT_YEAR = "sent_year",
+								ID = "id";
 	
 	//Constructor
-	public Pengiriman(String key)
+	public Pengiriman(String program, String siteID, Date dateSent)
 	{
-		super(Constants.PENGIRIMAN_FOLDER_PATH, key, Constants.PENGIRIMAN_FILE_EXTENSION);
+		super(Constants.PENGIRIMAN_FOLDER_PATH + program + "/" + 
+													siteID + "/" + 
+													dateSent.getYear() + "/" + 
+													dateSent.getMonth() + "/" +
+													dateSent.getDay() + "/", Constants.PENGIRIMAN_FILE_EXTENSION);
+		this.setID(IDGenerator.generate(IDGenerator.PENGIRIMAN));
+		this.setProgram(program);
+		this.setSite(siteID);
+		this.setDateSent(dateSent);
 	}
 	public Pengiriman(Document doc)
 	{
 		super(doc, Constants.PENGIRIMAN_FOLDER_PATH, Constants.PENGIRIMAN_FILE_EXTENSION);
+		
+		Date dateSent = this.getDateSent();
+		this.setFolderPath(Constants.PENGIRIMAN_FOLDER_PATH + "/" +
+							this.getProgram() + "/" +
+							this.getSite() + "/" +
+							dateSent.getDay() + "/" +
+							dateSent.getMonth() + "/" +
+							dateSent.getYear() + "/");
 	}
 	
 	//Methods
@@ -120,6 +138,15 @@ public class Pengiriman extends DataDriver
 						Integer.parseInt(this.getData(Pengiriman.DATE_UPLOAD_MONTH)),
 						Integer.parseInt(this.getData(Pengiriman.DATE_UPLOAD_YEAR)));
 	}
+	public void setID(String id)
+	{
+		this.setData(Pengiriman.ID, id);
+		super.setKey(id);
+	}
+	public String getID()
+	{
+		return this.getData(Pengiriman.ID);
+	}
 
 	//Overridden Methods
 	@Override
@@ -138,9 +165,21 @@ public class Pengiriman extends DataDriver
 	}
 
 	@Override
-	public String getDisplayName() 
+	public String toString() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.getItemName();
+	}
+	
+	@Override
+	public void setKey(String id)
+	{
+		super.setKey(id);
+		this.setID(id);
+	}
+	
+	@Override
+	public String getKey()
+	{
+		return this.getID();
 	}
 }
