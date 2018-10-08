@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 public class OverviewTable extends JTable implements TableCellRenderer
@@ -17,10 +15,14 @@ public class OverviewTable extends JTable implements TableCellRenderer
 	 */
 	private static final long serialVersionUID = -5539384614204097615L;
 
+	private JComponent[][] components;
+	
 	public OverviewTable(JComponent[][] data, String[] columns)
 	{
 		super(data, columns);
-		this.setModel(new CustomTableModel(data));
+		this.setModel(new CustomTableModel(data, columns));
+		
+		this.components = data;
 		
 		//Table properties
 //		this.getTableHeader().setBackground(new Color (8, 243, 240));			//Set Header color background
@@ -30,14 +32,14 @@ public class OverviewTable extends JTable implements TableCellRenderer
 		this.setAutoCreateRowSorter(true);					//Automatically create Row sorter
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);			//Set to manual column size, so it works with the JScrollPane
 		
-		for (int i=0; i<this.getColumnCount(); i++)
+		for (int i=0; i<this.getColumnCount()-1; i++)
 		{
-			this.getColumnModel().getColumn(i).setMinWidth(this.getColumnName(i).length()*100);
+			this.getColumnModel().getColumn(i).setMinWidth(this.getColumnName(i).length());
 		}
 		
 		//Center align headers
-		JLabel headerLabel = ((JLabel)this.getTableHeader().getDefaultRenderer());
-		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		JLabel headerLabel = ((JLabel)this.getTableHeader().getDefaultRenderer());
+//		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		//Makes the height the same as the button panel
 		try
@@ -60,7 +62,14 @@ public class OverviewTable extends JTable implements TableCellRenderer
 	@Override
 	public boolean isCellEditable(int row, int column)		//Make the table data un-editable (except the buttons column)
 	{
-		return true;
+		if (column == this.getColumnCount()-1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	@Override
@@ -119,5 +128,10 @@ public class OverviewTable extends JTable implements TableCellRenderer
 	public Component getTableCellRendererComponent(JTable arg0, Object arg1, boolean arg2, boolean arg3, int arg4,
 			int arg5) {
 		 return (Component) arg1;
+	}
+
+	@Override
+	public Object getValueAt(int row, int count) {
+		return this.components[row][count];
 	}
 }

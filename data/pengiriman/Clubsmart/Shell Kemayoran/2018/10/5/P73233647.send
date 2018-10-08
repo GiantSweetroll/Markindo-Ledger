@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <data>
    <site>Shell Kemayoran</site>
-   <amount>14</amount>
-   <receiver>Defr</receiver>
+   <amount>1</amount>
+   <receiver>Yudhi</receiver>
    <sender>Agus</sender>
    <upload_year>2018</upload_year>
-   <upload_day>1</upload_day>
-   <upload_month>1</upload_month>
-   <item_name>Donut-Clubsmart-15</item_name>
+   <upload_day>5</upload_day>
+   <upload_month>10</upload_month>
+   <item_name>Kertas Formulir F12</item_name>
+   <id>P73233647</id>
    <program>Clubsmart</program>
    <info_from_site/>
 </data>

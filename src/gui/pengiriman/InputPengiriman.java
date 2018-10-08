@@ -72,15 +72,16 @@ public class InputPengiriman extends InputForm
 		this.siteDesc.setEnabled(false);
 		this.sisaAlokasi.setEnabled(false);
 		this.itemDesc.setEnabled(false);
+		this.datePengiriman.getDateSelectionPanel().autoSetDate();
 		
 		//Add to form
 		this.addFormElement(this.program);
 		this.addFormElement(this.site);
 		this.addFormElement(this.siteDesc);
 		this.addFormElement(this.item);
+		this.addFormElement(this.itemDesc);
 		this.addFormElement(this.sisaAlokasi);
 		this.addFormElement(this.itemCount);
-		this.addFormElement(this.itemDesc);
 		this.addFormElement(this.datePengiriman);
 		this.addFormElement(this.sender);
 		this.addFormElement(this.penerima);
@@ -89,7 +90,7 @@ public class InputPengiriman extends InputForm
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
-	//private methods
+	//Private methods
 	private void updateSisaAlokasi()
 	{
 		sisaAlokasi.setData(Long.toString(Globals.ALOKASI.get(this.item.getSelectedIndex()).getAmount()));

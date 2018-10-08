@@ -1,15 +1,12 @@
 package methods;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 import constants.Constants;
 import datadriver.Alokasi;
@@ -19,6 +16,7 @@ import datadriver.Pengiriman;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
+import giantsweetroll.files.FileManager;
 import giantsweetroll.xml.dom.XMLManager;
 
 public class FileOperation 
@@ -88,21 +86,20 @@ public class FileOperation
 	public static List<? extends DataDriver> loadDataDriver(String folderPath, String extension)
 	{
 		List<DataDriver> list = new ArrayList<DataDriver>();
+		List<File> files = new ArrayList<File>();
 		
-		try
+		FileManager.getListOfFiles(files, folderPath, true);
+		
+		for (File file : files)
 		{
-			File folder = new File(folderPath);
-			File[] files = folder.listFiles();
-			
-			
-			for (File file : files)
+			if (file.isDirectory())
 			{
-				if(file.isDirectory())
+				continue;
+			}
+			else
+			{
+				try
 				{
-					continue;
-				}
-				try 
-				{					
 					Document doc = XMLManager.createDocument(file.getAbsolutePath(), false);
 					if(extension.equals(Constants.STOCK_FILE_EXTENSION))
 					{
@@ -128,11 +125,13 @@ public class FileOperation
 					{
 						list.add(new Pengiriman(doc));
 					}
-				} 
-				catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}
+				}
+				catch(Exception ex) 
+				{
+					ex.printStackTrace();
+				}
 			}
 		}
-		catch(NullPointerException ex) {}
 		
 		return list;
 	}

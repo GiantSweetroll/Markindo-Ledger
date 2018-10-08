@@ -6,9 +6,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import interfaces.GUIMethods;
-
-public class OverviewTablePanel extends JPanel implements GUIMethods
+public class OverviewTablePanel extends JPanel
 {
 
 	/**
@@ -49,17 +47,4 @@ public class OverviewTablePanel extends JPanel implements GUIMethods
 		this.revalidate();
 		this.repaint();
 	}
-	
-	//Overridden Methods
-	@Deprecated
-	@Override
-	public void resetDefaults() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Deprecated
-	@Override
-	public void refresh() {}
 }

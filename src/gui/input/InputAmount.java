@@ -22,7 +22,7 @@ public class InputAmount extends FormElement
 	{
 		super(name);
 		//Initialization
-		this.tf = new GTextField("", 20, new LongFilter(1L, Long.MAX_VALUE));
+		this.tf = new GTextField("", 20, new LongFilter(0L, Long.MAX_VALUE));
 		SpringLayout layout = this.getLayout();
 		
 		//Properties

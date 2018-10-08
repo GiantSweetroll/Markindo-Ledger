@@ -44,6 +44,7 @@ public class Pengiriman extends DataDriver
 	{
 		super(doc, Constants.PENGIRIMAN_FOLDER_PATH, Constants.PENGIRIMAN_FILE_EXTENSION);
 		
+		this.setKey(this.getID());
 		Date dateSent = this.getDateSent();
 		this.setFolderPath(Constants.PENGIRIMAN_FOLDER_PATH + "/" +
 							this.getProgram() + "/" +
@@ -140,8 +141,8 @@ public class Pengiriman extends DataDriver
 	}
 	public void setID(String id)
 	{
-		this.setData(Pengiriman.ID, id);
 		super.setKey(id);
+		this.setData(Pengiriman.ID, id);
 	}
 	public String getID()
 	{
@@ -168,13 +169,6 @@ public class Pengiriman extends DataDriver
 	public String toString() 
 	{
 		return this.getItemName();
-	}
-	
-	@Override
-	public void setKey(String id)
-	{
-		super.setKey(id);
-		this.setID(id);
 	}
 	
 	@Override

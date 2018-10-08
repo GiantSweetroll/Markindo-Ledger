@@ -71,7 +71,7 @@ public class Site extends DataDriver
 	{
 		List<String> list = new ArrayList<String>();
 		
-		list.add(this.getID());
+//		list.add(this.getID());
 		list.add(this.getName());
 		list.add(this.getArea());
 		list.add(this.getInfo());

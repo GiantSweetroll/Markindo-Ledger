@@ -30,12 +30,12 @@ public class InputLongText extends FormElement
 		this.add(this.ta);
 	}
 	
-	//Overriden Methods
+	//Overridden Methods
 	@Override
 	public void setEnabled(boolean enabled)
 	{
 		super.setEnabled(enabled);
-		this.ta.setEnabled(enabled);
+		this.ta.setEditable(enabled);
 	}
 	
 	@Override

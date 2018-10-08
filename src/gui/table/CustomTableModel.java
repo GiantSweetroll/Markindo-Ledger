@@ -12,10 +12,12 @@ public class CustomTableModel extends AbstractTableModel
 	private static final long serialVersionUID = 1780823641175579655L;
 
 	private JComponent[][] components;
+	private String[] headers;
 	
-	public CustomTableModel(JComponent[][] components)
+	public CustomTableModel(JComponent[][] components, String[] headers)
 	{
 		this.components = components;
+		this.headers = headers;
 	}
 	
 	//Overridden Methods
@@ -44,9 +46,8 @@ public class CustomTableModel extends AbstractTableModel
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int column)		//Make the table data un-editable (except the buttons column)
+	public String getColumnName(int column)
 	{
-		return true;
+		return this.headers[column];
 	}
-
 }

@@ -37,6 +37,10 @@ public class InputDate extends FormElement
 	{
 		return this.date.getDate();
 	}
+	public DateSelectionPanel getDateSelectionPanel()
+	{
+		return this.date;
+	}
 
 	//Overridden Methods
 	@Override

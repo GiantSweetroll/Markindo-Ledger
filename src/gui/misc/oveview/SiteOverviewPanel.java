@@ -32,10 +32,7 @@ public class SiteOverviewPanel extends MiscOverviewPanel
 	
 	@Deprecated
 	@Override
-	public void resetDefaults()
-	{
-		this.getOveviewTablePanel().resetDefaults();
-	}
+	public void resetDefaults(){}
 
 	@Override
 	public void refresh() 

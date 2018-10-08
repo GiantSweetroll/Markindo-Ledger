@@ -35,6 +35,7 @@ public class Alokasi extends DataDriver
 	{
 		super(doc, Constants.ALOKASI_FOLDER_PATH, Constants.ALOKASI_FILE_EXTENSION);
 		
+		this.setKey(this.getItem());
 		this.setFolderPath(Constants.ALOKASI_FOLDER_PATH + this.getProgram() + "/" + this.getSite() + "/" + this.getPIC() + "/");
 	}
 	

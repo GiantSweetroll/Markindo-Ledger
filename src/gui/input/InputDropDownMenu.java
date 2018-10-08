@@ -40,14 +40,14 @@ public class InputDropDownMenu extends FormElement
 	}
 	
 	//Methods
-	public void setItems(String[] items)
+	public void setItems(Object[] items)
 	{
 		this.items = items;
 		this.refresh();
 	}
-	public void setItems(List<String> items)
+	public void setItems(List<Object> items)
 	{
-		this.setItems(items.toArray(new String[items.size()]));
+		this.setItems(items.toArray(new Object[items.size()]));
 	}
 	public Object[] getItems()
 	{
@@ -60,6 +60,10 @@ public class InputDropDownMenu extends FormElement
 	public int getSelectedIndex()
 	{
 		return this.combo.getSelectedIndex();
+	}
+	public Object getSelectedItem()
+	{
+		return this.combo.getSelectedItem();
 	}
 	
 	//Overridden Methods

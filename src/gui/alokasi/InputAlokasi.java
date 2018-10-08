@@ -1,6 +1,7 @@
 package gui.alokasi;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 
@@ -29,7 +30,7 @@ public class InputAlokasi extends InputForm
 	private InputDropDownMenu program, site, item, pic;
 	private InputLongText siteInfo;
 	private InputText itemInfo;
-	private InputAmount amount;
+	private InputAmount amount, stockLeft;
 	private Date dateInput;
 	
 	public InputAlokasi()
@@ -39,20 +40,45 @@ public class InputAlokasi extends InputForm
 		this.program = new InputDropDownMenu("Nama Program", Methods.getDisplayNames(Globals.PROGRAMS));
 		this.site = new InputDropDownMenu("Site", Methods.getDisplayNames(Globals.SITES));
 		this.siteInfo = new InputLongText("Deskripsi Site");
-		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.STOCKS));
+		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.STOCKS))
+				{
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = -3971103869344717638L;
+
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						updateSisaStock();
+					}
+				};
 		this.amount = new InputAmount("Jumlah");
 		this.itemInfo = new InputText("Keterangan Item");
 		this.pic = new InputDropDownMenu("PIC Shell", Methods.getDisplayNames(Globals.PICS));
+		this.stockLeft = new InputAmount("Sisa Stok");
+		
+		//Properties
+		this.siteInfo.setEnabled(false);
+		this.stockLeft.setEnabled(false);
+		this.updateSisaStock();
 		
 		this.addFormElement(this.program);
 		this.addFormElement(this.site);
 		this.addFormElement(this.siteInfo);
 		this.addFormElement(this.item);
+		this.addFormElement(this.stockLeft);
 		this.addFormElement(this.amount);
 		this.addFormElement(this.itemInfo);
 		this.addFormElement(this.pic);
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+	}
+	
+	//Private Methods
+	private void updateSisaStock()
+	{
+		this.stockLeft.setData(Long.toString(Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount()));
 	}
 
 	//Overridden Methods
