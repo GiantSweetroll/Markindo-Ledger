@@ -96,6 +96,12 @@ public class InputPengiriman extends InputForm
 		sisaAlokasi.setData(Long.toString(Globals.ALOKASI.get(this.item.getSelectedIndex()).getAmount()));
 	}
 	
+	//Public Methods
+	public void updateAlokasiOptions()
+	{
+		this.item.setItems(Globals.ALOKASI.toArray(new Object[Globals.ALOKASI.size()]));
+	}
+	
 	//Overridden Methods
 	@Override
 	public DataDriver getData() 

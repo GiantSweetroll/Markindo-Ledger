@@ -80,6 +80,12 @@ public class InputAlokasi extends InputForm
 	{
 		this.stockLeft.setData(Long.toString(Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount()));
 	}
+	
+	//public methods
+	public void updateStockOptions()
+	{
+		this.item.setItems(Globals.STOCKS.toArray(new Object[Globals.STOCKS.size()]));
+	}
 
 	//Overridden Methods
 	@Override
@@ -141,6 +147,7 @@ public class InputAlokasi extends InputForm
 		FileOperation.exportData(stock);
 		Globals.stockOverview.refresh();
 		Globals.alokasiOverview.refresh();
+		Globals.pengirimanInput.updateAlokasiOptions();
 	}
 	
 	@Override

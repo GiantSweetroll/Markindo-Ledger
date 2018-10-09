@@ -28,7 +28,7 @@ public class SearchFilterItem extends JPanel
 								PROGRAM = "program",
 								PIC = "pic";
 	
-	public SearchFilterItem(String itemName, String key, String[] items)
+	public SearchFilterItem(String itemName, String key, Object[] items)
 	{
 		//Initialization
 		this.label = new JLabel(itemName);
@@ -52,12 +52,12 @@ public class SearchFilterItem extends JPanel
 	{
 		return this.key;
 	}
-	public void setItems(String[] items)
+	public void setItems(Object[] items)
 	{
 		this.options.setItems(items);
 	}
-	public String getSelectedFilter()
+	public Object getSelectedFilter()
 	{
-		return GMisc.getItem(this.options).toString();
+		return GMisc.getItem(this.options);
 	}
 }

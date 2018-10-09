@@ -1,6 +1,7 @@
 package stok;
 
 import constants.FramePanelConstants;
+import constants.Globals;
 import datadriver.DataDriver;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
@@ -94,7 +95,11 @@ public class InputStock extends InputForm
 	public void savingDataStarting() {}
 
 	@Override
-	public void savingDataClosing() {}
+	public void savingDataClosing() 
+	{
+		Globals.alokasiInput.updateStockOptions();
+		Globals.stockOverview.refresh();
+	}
 
 	@Override
 	public boolean canExport() {return true;}

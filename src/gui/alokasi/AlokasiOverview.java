@@ -3,6 +3,7 @@ package gui.alokasi;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import datadriver.Program;
 import gui.overviewpanel.OverviewPanel;
 import gui.search.SearchFilterItem;
 import methods.Methods;
@@ -35,5 +36,7 @@ public class AlokasiOverview extends OverviewPanel
 	{
 		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.ALOKASI), 
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.SITE, Globals.SITES.toArray(new Program[Globals.SITES.size()]));
 	}
 }

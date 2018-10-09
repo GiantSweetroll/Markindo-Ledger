@@ -73,7 +73,7 @@ public class SearchFilterPanel extends JPanel
 		}
 	}
 	//Methods
-	public void updateItem(String key, String[] items)
+	public void updateItem(String key, Object[] items)
 	{
 		this.filters.get(key).setItems(items);
 	}

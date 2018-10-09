@@ -157,8 +157,8 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 						MainFrame.changePanel(nextPanelName);
 					}
 					
-					this.savingDataClosing();
 					Methods.reloadGlobalVariables();
+					this.savingDataClosing();
 					break;
 				}
 		}

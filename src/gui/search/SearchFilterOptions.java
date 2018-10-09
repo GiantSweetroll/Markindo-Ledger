@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 
 import constants.SearchFilterConstants;
 
-public class SearchFilterOptions extends JComboBox<String>
+public class SearchFilterOptions extends JComboBox<Object>
 {
 
 	/**
@@ -13,14 +13,14 @@ public class SearchFilterOptions extends JComboBox<String>
 	 */
 	private static final long serialVersionUID = 4445485145641077419L;
 
-	protected SearchFilterOptions(String[] items)
+	protected SearchFilterOptions(Object[] items)
 	{
 		super(initOptions(items));
 	}
 	
-	private static String[] initOptions(String[] items)
+	private static Object[] initOptions(Object[] items)
 	{
-		String[] arr = new String[items.length+1];
+		Object[] arr = new Object[items.length+1];
 		arr[0] = SearchFilterConstants.ALL;
 		for (int i=1; i<arr.length; i++)
 		{
@@ -29,8 +29,8 @@ public class SearchFilterOptions extends JComboBox<String>
 		
 		return arr;
 	}
-	public void setItems(String[] items)
+	public void setItems(Object[] items)
 	{
-		this.setModel(new DefaultComboBoxModel<String>(items));
+		this.setModel(new DefaultComboBoxModel<Object>(items));
 	}
 }

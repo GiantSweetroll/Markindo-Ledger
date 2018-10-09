@@ -38,6 +38,7 @@ public class MainFrame
 //		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //		frame.setUndecorated(true);
 		panel.setLayout(new CardLayout());
+		Globals.stockOverview.refresh();
 		
 		//Add to panel
 		panel.add(Globals.mainMenu, FramePanelConstants.MAIN_MENU);

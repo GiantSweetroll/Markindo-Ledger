@@ -3,7 +3,9 @@ package stok;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import datadriver.Stock;
 import gui.overviewpanel.OverviewPanel;
+import gui.search.SearchFilterItem;
 import methods.Methods;
 
 public class StockOverview extends OverviewPanel
@@ -27,6 +29,7 @@ public class StockOverview extends OverviewPanel
 	{
 		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.STOCKS), 
 												Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 	}
 
 }
