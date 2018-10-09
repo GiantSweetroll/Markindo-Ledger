@@ -29,7 +29,7 @@ public class OverviewTable extends JTable implements TableCellRenderer
 		this.getTableHeader().setBackground(Color.GRAY);
 		this.getTableHeader().setForeground(Color.WHITE);
 		this.setBackground(Color.WHITE);
-		this.setAutoCreateRowSorter(true);					//Automatically create Row sorter
+		this.setAutoCreateRowSorter(true);						//Automatically create Row sorter
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);			//Set to manual column size, so it works with the JScrollPane
 		
 		for (int i=0; i<this.getColumnCount()-1; i++)
