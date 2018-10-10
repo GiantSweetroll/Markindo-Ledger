@@ -39,6 +39,8 @@ public class MainFrame
 //		frame.setUndecorated(true);
 		panel.setLayout(new CardLayout());
 		Globals.stockOverview.refresh();
+		Globals.alokasiOverview.refresh();
+		Globals.pengirimanOverview.refresh();
 		
 		//Add to panel
 		panel.add(Globals.mainMenu, FramePanelConstants.MAIN_MENU);

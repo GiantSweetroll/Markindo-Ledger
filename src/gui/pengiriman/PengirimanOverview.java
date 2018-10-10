@@ -3,6 +3,7 @@ package gui.pengiriman;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import datadriver.Stock;
 import gui.overviewpanel.OverviewPanel;
 import gui.search.SearchFilterItem;
 import methods.Methods;
@@ -35,5 +36,6 @@ public class PengirimanOverview extends OverviewPanel
 	{
 		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.PENGIRIMAN), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 	}
 }

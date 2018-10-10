@@ -31,6 +31,6 @@ public class SearchFilterOptions extends JComboBox<Object>
 	}
 	public void setItems(Object[] items)
 	{
-		this.setModel(new DefaultComboBoxModel<Object>(items));
+		this.setModel(new DefaultComboBoxModel<Object>(initOptions(items)));
 	}
 }
