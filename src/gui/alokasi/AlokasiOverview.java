@@ -4,6 +4,7 @@ import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
 import datadriver.Program;
+import datadriver.Stock;
 import gui.overviewpanel.OverviewPanel;
 import gui.search.SearchFilterItem;
 import methods.Methods;
@@ -38,5 +39,6 @@ public class AlokasiOverview extends OverviewPanel
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.SITE, Globals.SITES.toArray(new Program[Globals.SITES.size()]));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 	}
 }
