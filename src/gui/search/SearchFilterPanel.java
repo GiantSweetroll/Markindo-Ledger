@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import datadriver.Stock;
+
 public class SearchFilterPanel extends JPanel
 {
 
@@ -72,7 +74,7 @@ public class SearchFilterPanel extends JPanel
 			this.panelFilters.add(entry.getValue());
 		}
 	}
-	//Methods
+	//Public Methods
 	public void updateItem(String key, Object[] items)
 	{
 		this.filters.get(key).setItems(items);
@@ -84,6 +86,12 @@ public class SearchFilterPanel extends JPanel
 		this.panelFilters.revalidate();
 		this.panelFilters.repaint();
 	}
+	public Stock getItem()
+	{
+		
+	}
+	
+	//Private Methods
 	private void initFilterList()
 	{
 		this.filters = new LinkedHashMap<String, SearchFilterItem>();

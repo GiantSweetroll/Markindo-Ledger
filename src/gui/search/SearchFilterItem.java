@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import constants.InsetsConstants;
-import giantsweetroll.GMisc;
 
 public class SearchFilterItem extends JPanel
 {
@@ -58,6 +57,6 @@ public class SearchFilterItem extends JPanel
 	}
 	public Object getSelectedFilter()
 	{
-		return GMisc.getItem(this.options);
+		return this.options.getSelectedItem();
 	}
 }

@@ -1,6 +1,10 @@
 package methods;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -14,6 +18,7 @@ import constants.Constants;
 import constants.Globals;
 import constants.InsetsConstants;
 import datadriver.DataDriver;
+import datadriver.Site;
 import giantsweetroll.date.Date;
 import giantsweetroll.xml.dom.XMLManager;
 import gui.ActionPanel;
@@ -122,5 +127,18 @@ public class Methods
 		layout.putConstraint(SpringLayout.WEST, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.WEST, parent);
 		layout.putConstraint(SpringLayout.NORTH, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.SOUTH, c2);
 		layout.putConstraint(SpringLayout.EAST, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.EAST, parent);
+	}
+	
+	public static String[] getListOfAreas()
+	{
+		Set<String> areaSet = new HashSet<String>();
+		for (Site site : Globals.SITES)
+		{
+			areaSet.add(site.getArea());
+		}
+		List<String> sortedAreas = new ArrayList<String>(areaSet);
+		Collections.sort(sortedAreas);
+		
+		return sortedAreas.toArray(new String[sortedAreas.size()]);
 	}
 }
