@@ -39,7 +39,13 @@ public class AlokasiOverview extends OverviewPanel
 												Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()]));
-		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.AREA, Methods.getListOfAreas());
+	}
+
+	@Override
+	public void filter() {
+		// TODO Auto-generated method stub
+		
 	}
 }

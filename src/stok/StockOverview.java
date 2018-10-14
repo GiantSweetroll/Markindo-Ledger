@@ -14,7 +14,7 @@ public class StockOverview extends OverviewPanel
 	 * 
 	 */
 	private static final long serialVersionUID = 3792339165691238959L;
-
+	
 	public StockOverview()
 	{
 		super("Stok", 
@@ -27,9 +27,15 @@ public class StockOverview extends OverviewPanel
 	@Override
 	public void refresh() 
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.STOCKS), 
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterStock()), 
 												Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
-		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 	}
 
+	@Override
+	public void filter() 
+	{
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterStock()), 
+				Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
+	}
 }

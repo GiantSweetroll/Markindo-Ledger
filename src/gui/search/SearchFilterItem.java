@@ -21,7 +21,7 @@ public class SearchFilterItem extends JPanel
 	private String key;
 	
 	//Constants
-	public static final String ITEM_NAME = "itemname",
+	public static final String STOCK = "stock",
 								AREA = "area",
 								SITE = "site",
 								PROGRAM = "program",
@@ -55,8 +55,16 @@ public class SearchFilterItem extends JPanel
 	{
 		this.options.setItems(items);
 	}
+	public int getSelectedIndex()
+	{
+		return this.options.getSelectedIndex();
+	}
 	public Object getSelectedFilter()
 	{
 		return this.options.getSelectedItem();
+	}
+	public void resetSelection()
+	{
+		this.options.setSelectedIndex(0);
 	}
 }

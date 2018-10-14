@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import gui.AddDataPanel;
 import gui.PageHyperlinkBar;
+import gui.search.SearchFilterItem;
 import gui.search.SearchFilterPanel;
 import gui.table.OverviewTablePanel;
 
@@ -29,13 +30,15 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 	private OverviewTablePanel tablePanel;
 	private JButton butRefresh;
 	
+	protected int itemNameLastIndex, programLastIndex, areaLastIndex, siteLastIndex, picLastIndex;
+	
 	//Constructors
 	public OverviewPanel(String sectionName, String inputPanelConstant, JComponent[][] data, String[] tableHeaders)
 	{
 		//Initialization
 		this.link = new PageHyperlinkBar(sectionName);
 		this.panelAddAData = new AddDataPanel(inputPanelConstant);
-		this.panelFilter = new SearchFilterPanel();
+		this.panelFilter = new SearchFilterPanel(this);
 		this.tablePanel = new OverviewTablePanel(data, tableHeaders);
 		this.butRefresh = new JButton("Refresh");
 		
@@ -76,6 +79,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 	
 	//Abstract Methods
 	public abstract void refresh();
+	public abstract void filter();
 	
 	//Interfaces
 	public void actionPerformed(ActionEvent e)

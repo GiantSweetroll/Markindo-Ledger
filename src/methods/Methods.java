@@ -19,9 +19,12 @@ import constants.Globals;
 import constants.InsetsConstants;
 import datadriver.DataDriver;
 import datadriver.Site;
+import datadriver.Stock;
 import giantsweetroll.date.Date;
 import giantsweetroll.xml.dom.XMLManager;
 import gui.ActionPanel;
+import gui.overviewpanel.OverviewPanel;
+import gui.search.SearchFilterPanel;
 
 public class Methods 
 {
@@ -140,5 +143,36 @@ public class Methods
 		Collections.sort(sortedAreas);
 		
 		return sortedAreas.toArray(new String[sortedAreas.size()]);
+	}
+	
+	public static void filter(OverviewPanel overview)
+	{
+		overview.filter();
+	}
+	
+	public static List<Stock> filterStock()
+	{
+		List<Stock> stocks = new ArrayList<Stock>();
+		
+		SearchFilterPanel filter = Globals.stockOverview.getSearchFilterPanel();
+		String itemName;
+		try
+		{
+			itemName = filter.getStockFilter().getItemName();
+		}
+		catch(NullPointerException ex)
+		{
+			return Globals.STOCKS;
+		}
+		for (Stock stock : Globals.STOCKS)
+		{
+			if (stock.getItemName().equals(itemName))
+			{
+				stocks.add(stock);
+				break;
+			}
+		}
+		
+		return stocks;
 	}
 }

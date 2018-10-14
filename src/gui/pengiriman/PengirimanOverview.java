@@ -36,7 +36,14 @@ public class PengirimanOverview extends OverviewPanel
 	{
 		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.PENGIRIMAN), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
-		this.getSearchFilterPanel().updateItem(SearchFilterItem.ITEM_NAME, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.AREA, Methods.getListOfAreas());
+	}
+
+
+	@Override
+	public void filter() {
+		// TODO Auto-generated method stub
+		
 	}
 }
