@@ -3,6 +3,7 @@ package gui.alokasi;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import datadriver.PIC;
 import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
@@ -27,8 +28,8 @@ public class AlokasiOverview extends OverviewPanel
 		
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Methods.getDisplayNames(Globals.PROGRAMS)));
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Area", SearchFilterItem.AREA, Methods.getListOfAreas()));
-		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, Methods.getDisplayNames(Globals.SITES)));
-		this.getSearchFilterPanel().addFilter(new SearchFilterItem("PIC", SearchFilterItem.PIC, Methods.getDisplayNames(Globals.PICS)));
+		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()])));
+		this.getSearchFilterPanel().addFilter(new SearchFilterItem("PIC", SearchFilterItem.PIC, Globals.PICS.toArray(new PIC[Globals.PICS.size()])));
 	}
 	
 	//Overridden Methods
@@ -41,11 +42,13 @@ public class AlokasiOverview extends OverviewPanel
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.AREA, Methods.getListOfAreas());
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.PIC, Globals.PICS.toArray(new PIC[Globals.PICS.size()]));
 	}
 
 	@Override
-	public void filter() {
-		// TODO Auto-generated method stub
-		
+	public void filter() 
+	{
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterAlokasi()), 
+				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 	}
 }

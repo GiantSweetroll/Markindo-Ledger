@@ -57,6 +57,6 @@ public abstract class FormElement extends JPanel implements GUIMethods, ActionLi
 	
 	//Abstract Methods
 	public abstract boolean isFilled();
-	public abstract String getData();
+	public abstract Object getData();
 	public abstract void setData(String data);
 }

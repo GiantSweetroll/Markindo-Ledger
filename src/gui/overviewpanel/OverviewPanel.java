@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import gui.AddDataPanel;
 import gui.PageHyperlinkBar;
-import gui.search.SearchFilterItem;
 import gui.search.SearchFilterPanel;
 import gui.table.OverviewTablePanel;
 

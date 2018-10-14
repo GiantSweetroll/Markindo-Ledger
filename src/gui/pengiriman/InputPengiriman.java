@@ -11,6 +11,7 @@ import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
 import datadriver.Pengiriman;
+import datadriver.Site;
 import giantsweetroll.date.Date;
 import giantsweetroll.message.MessageManager;
 import gui.input.InputAmount;
@@ -106,14 +107,14 @@ public class InputPengiriman extends InputForm
 	@Override
 	public DataDriver getData() 
 	{		
-		Pengiriman send = new Pengiriman(this.program.getData(),
-											this.site.getData(),
+		Pengiriman send = new Pengiriman(this.program.getData().toString(),
+											((Site)this.site.getData()).getID(),
 											this.datePengiriman.getDate());
 		
 		send.setDateUpload(new Date());
-		send.setItemName(this.item.getData());
+		send.setItemName(this.item.getData().toString());
 		send.setAmount(this.itemCount.getData());
-		send.setSender(this.sender.getData());
+		send.setSender(this.sender.getData().toString());
 		send.setReceiver(this.penerima.getData());
 		send.setInfoFromSite(this.infoFromSite.getData());
 		
@@ -147,7 +148,7 @@ public class InputPengiriman extends InputForm
 	@Override
 	public void savingDataClosing()
 	{
-		Alokasi alokasi = Globals.ALOKASI.get(Methods.findDataIndexByDisplayName(Globals.ALOKASI, this.item.getData()));
+		Alokasi alokasi = Globals.ALOKASI.get(Methods.findDataIndexByDisplayName(Globals.ALOKASI, this.item.getData().toString()));
 		if (this.isNewEntry())
 		{
 			alokasi.setAmount(alokasi.getAmount() - Long.parseLong(this.itemCount.getData()));

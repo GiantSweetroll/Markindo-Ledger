@@ -128,7 +128,7 @@ public class SearchFilterPanel extends JPanel implements ActionListener
 		}
 		catch(NullPointerException ex)
 		{
-			return "";
+			return null;
 		}
 	}
 	public Site getSiteFilter()
@@ -146,7 +146,18 @@ public class SearchFilterPanel extends JPanel implements ActionListener
 	{
 		try
 		{
-			return (PIC)this.getSelectedFilter(SearchFilterItem.SITE);
+			return (PIC)this.getSelectedFilter(SearchFilterItem.PIC);
+		}
+		catch(NullPointerException ex)
+		{
+			return null;
+		}
+	}
+	public String getSenderFilter()
+	{	
+		try
+		{	
+			return this.getSelectedFilter(SearchFilterItem.SENDER).toString();
 		}
 		catch(NullPointerException ex)
 		{

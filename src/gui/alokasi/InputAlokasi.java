@@ -9,6 +9,7 @@ import constants.FramePanelConstants;
 import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
+import datadriver.Site;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
 import giantsweetroll.message.MessageManager;
@@ -38,7 +39,7 @@ public class InputAlokasi extends InputForm
 		super("Alokasi", FramePanelConstants.ALOKASI_OVERVIEW, FramePanelConstants.ALOKASI_OVERVIEW);
 	
 		this.program = new InputDropDownMenu("Nama Program", Methods.getDisplayNames(Globals.PROGRAMS));
-		this.site = new InputDropDownMenu("Site", Methods.getDisplayNames(Globals.SITES));
+		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]));
 		this.siteInfo = new InputLongText("Deskripsi Site");
 		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.STOCKS))
 				{
@@ -91,7 +92,10 @@ public class InputAlokasi extends InputForm
 	@Override
 	public Alokasi getData()
 	{
-		Alokasi alo = new Alokasi(this.program.getData(), this.site.getData(), this.pic.getData(), this.item.getData());
+		Alokasi alo = new Alokasi(this.program.getData().toString(), 
+									((Site)this.site.getData()).getID(), 
+									this.pic.getData().toString(), 
+									this.item.getData().toString());
 		
 		alo.setAmount(this.amount.getData());
 		alo.setItemInfo(this.itemInfo.getData());
@@ -139,7 +143,7 @@ public class InputAlokasi extends InputForm
 	@Override
 	public void savingDataClosing() 
 	{
-		Stock stock = Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData()));
+		Stock stock = Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData().toString()));
 		if (this.isNewEntry())
 		{
 			stock.setItemCount(stock.getItemCount() - Long.parseLong(this.amount.getData()));
@@ -153,7 +157,7 @@ public class InputAlokasi extends InputForm
 	@Override
 	public boolean canExport()
 	{
-		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData())).getItemCount() ||
+		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData().toString())).getItemCount() ||
 				Long.parseLong(this.amount.getData()) <= 0)
 		{
 			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah alokasi tidak sesuai");

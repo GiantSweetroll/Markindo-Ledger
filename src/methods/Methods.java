@@ -17,7 +17,9 @@ import org.w3c.dom.NodeList;
 import constants.Constants;
 import constants.Globals;
 import constants.InsetsConstants;
+import datadriver.Alokasi;
 import datadriver.DataDriver;
+import datadriver.Pengiriman;
 import datadriver.Site;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
@@ -174,5 +176,202 @@ public class Methods
 		}
 		
 		return stocks;
+	}
+	
+	public static List<Alokasi> filterAlokasi()
+	{
+		List<Alokasi> alokasi = new ArrayList<Alokasi>();
+		List<Alokasi> temp = new ArrayList<Alokasi>();
+		
+		SearchFilterPanel filter = Globals.alokasiOverview.getSearchFilterPanel();
+		String filterKey;
+		//Filter by item
+		try
+		{
+			filterKey = filter.getStockFilter().getItemName();
+			for (Alokasi alok : Globals.ALOKASI)
+			{
+				if (alok.getItem().equals(filterKey))
+				{
+					alokasi.add(alok);
+				}
+			}
+		}
+		catch(NullPointerException ex) 
+		{
+			alokasi = Globals.ALOKASI;
+		}
+		
+		//Filter by program
+		try
+		{
+			filterKey = filter.getProgramFilter().getName();
+			for (Alokasi alok : alokasi)
+			{
+				if (alok.getProgram().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Alokasi>();
+		
+		//Filter by Area
+		try
+		{
+			filterKey = filter.getAreaFilter();
+			for (Alokasi alok : alokasi)
+			{
+				if (Methods.getSitekByID(alok.getSite()).getArea().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Alokasi>();
+		
+		//Filter by Site
+		try
+		{
+			filterKey = filter.getSiteFilter().getID();
+			for (Alokasi alok : alokasi)
+			{
+				if (alok.getSite().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Alokasi>();
+		
+		//Filter by PIC
+		try
+		{
+			filterKey = filter.getPICFilter().getName();
+			for (Alokasi alok : alokasi)
+			{
+				if (alok.getPIC().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		return alokasi;
+	}
+	
+	public static List<Pengiriman> filterPengiriman()
+	{
+		List<Pengiriman> alokasi = new ArrayList<Pengiriman>();
+		List<Pengiriman> temp = new ArrayList<Pengiriman>();
+		
+		SearchFilterPanel filter = Globals.pengirimanOverview.getSearchFilterPanel();
+		String filterKey;
+		//Filter by item
+		try
+		{
+			filterKey = filter.getStockFilter().getItemName();
+			for (Pengiriman alok : Globals.PENGIRIMAN)
+			{
+				if (alok.getItemName().equals(filterKey))
+				{
+					alokasi.add(alok);
+				}
+			}
+		}
+		catch(NullPointerException ex) 
+		{
+			alokasi = Globals.PENGIRIMAN;
+		}
+		
+		//Filter by program
+		try
+		{
+			filterKey = filter.getProgramFilter().getName();
+			for (Pengiriman alok : alokasi)
+			{
+				if (alok.getProgram().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Pengiriman>();
+		
+		//Filter by Area
+		try
+		{
+			filterKey = filter.getAreaFilter();
+			if(!filterKey.equals(""))
+			{
+				for (Pengiriman alok : alokasi)
+				{
+					if (Methods.getSitekByID(alok.getSite()).getArea().equals(filterKey))
+					{
+						temp.add(alok);
+					}
+				}
+				alokasi = temp;
+			}
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Pengiriman>();
+		
+		//Filter by Site
+		try
+		{
+			filterKey = filter.getSiteFilter().getID();
+			for (Pengiriman alok : alokasi)
+			{
+				if (alok.getSite().equals(filterKey))
+				{
+					temp.add(alok);
+				}
+			}
+			alokasi = temp;
+		}
+		catch(NullPointerException ex) {}
+		temp = new ArrayList<Pengiriman>();
+		
+		//Filter by Sender
+		try
+		{
+			filterKey = filter.getSenderFilter();
+			if (!filterKey.equals(""))
+			{
+				for (Pengiriman alok : alokasi)
+				{
+					if (alok.getSender().equals(filterKey))
+					{
+						temp.add(alok);
+					}
+				}
+				alokasi = temp;
+			}
+		}
+		catch(NullPointerException ex) {}
+		return alokasi;
+	}
+	
+	public static Site getSitekByID(String id)
+	{
+		for (Site site : Globals.SITES)
+		{
+			if (site.getID().equals(id))
+			{
+				return site;
+			}
+		}
+		
+		return null;
 	}
 }

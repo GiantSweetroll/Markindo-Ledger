@@ -25,7 +25,8 @@ public class SearchFilterItem extends JPanel
 								AREA = "area",
 								SITE = "site",
 								PROGRAM = "program",
-								PIC = "pic";
+								PIC = "pic",
+								SENDER = "sender";
 	
 	public SearchFilterItem(String itemName, String key, Object[] items)
 	{

@@ -6,7 +6,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.SpringLayout;
 
-import giantsweetroll.GMisc;
 import methods.Methods;
 import renderers.ComboBoxObjectRenderer;
 
@@ -87,8 +86,8 @@ public class InputDropDownMenu extends FormElement
 	}
 
 	@Override
-	public String getData()
-	{return GMisc.getItem(this.combo).toString();}
+	public Object getData()
+	{return this.combo.getSelectedItem();}
 	
 	@Override
 	public void setData(String text)

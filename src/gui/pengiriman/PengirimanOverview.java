@@ -3,6 +3,8 @@ package gui.pengiriman;
 import constants.Constants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import datadriver.Program;
+import datadriver.Site;
 import datadriver.Stock;
 import gui.overviewpanel.OverviewPanel;
 import gui.search.SearchFilterItem;
@@ -23,10 +25,10 @@ public class PengirimanOverview extends OverviewPanel
 				Methods.getDataForTable(Globals.PENGIRIMAN), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 		
-		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Methods.getDisplayNames(Globals.PROGRAMS)));
+		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()])));
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Area", SearchFilterItem.AREA, Methods.getListOfAreas()));
-		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, Methods.getDisplayNames(Globals.SITES)));
-		this.getSearchFilterPanel().addFilter(new SearchFilterItem("PIC", SearchFilterItem.PIC, Methods.getDisplayNames(Globals.PICS)));
+		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()])));
+		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Pengirim", SearchFilterItem.SENDER, Constants.SENDERS));
 	}
 	
 	
@@ -38,12 +40,14 @@ public class PengirimanOverview extends OverviewPanel
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.AREA, Methods.getListOfAreas());
+		this.getSearchFilterPanel().updateItem(SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
 	}
 
 
 	@Override
-	public void filter() {
-		// TODO Auto-generated method stub
-		
+	public void filter() 
+	{
+		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterPengiriman()), 
+				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 	}
 }
