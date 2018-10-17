@@ -224,7 +224,7 @@ public class Methods
 			filterKey = filter.getAreaFilter();
 			for (Alokasi alok : alokasi)
 			{
-				if (Methods.getSitekByID(alok.getSite()).getArea().equals(filterKey))
+				if (Methods.getSiteByID(alok.getSite()).getArea().equals(filterKey))
 				{
 					temp.add(alok);
 				}
@@ -315,7 +315,7 @@ public class Methods
 			{
 				for (Pengiriman alok : alokasi)
 				{
-					if (Methods.getSitekByID(alok.getSite()).getArea().equals(filterKey))
+					if (Methods.getSiteByID(alok.getSite()).getArea().equals(filterKey))
 					{
 						temp.add(alok);
 					}
@@ -362,7 +362,7 @@ public class Methods
 		return alokasi;
 	}
 	
-	public static Site getSitekByID(String id)
+	public static Site getSiteByID(String id)
 	{
 		for (Site site : Globals.SITES)
 		{
@@ -373,5 +373,18 @@ public class Methods
 		}
 		
 		return null;
+	}
+	
+	public static String getSiteNameByID(String id)
+	{
+		Site site = Methods.getSiteByID(id);
+		if (site==null)
+		{
+			return "";
+		}
+		else
+		{
+			return site.getName();
+		}
 	}
 }

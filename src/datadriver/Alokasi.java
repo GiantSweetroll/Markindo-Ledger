@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 
 import constants.Constants;
 import giantsweetroll.date.Date;
+import methods.Methods;
 
 public class Alokasi extends DataDriver
 {
@@ -112,7 +113,7 @@ public class Alokasi extends DataDriver
 		List<String> list = new ArrayList<String>();
 		
 		list.add(this.getProgram());
-		list.add(this.getSite());
+		list.add(Methods.getSiteNameByID((this.getSite())));
 		list.add(this.getItem());
 		list.add(Long.toString(this.getAmount()));
 		

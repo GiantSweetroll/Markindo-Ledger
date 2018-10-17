@@ -157,7 +157,7 @@ public class Pengiriman extends DataDriver
 		
 		list.add(Methods.getDateAsString(this.getDateSent()));
 		list.add(this.getProgram());
-		list.add(this.getSite());
+		list.add(Methods.getSiteNameByID((this.getSite())));
 		list.add(this.getItemName());
 		list.add(Long.toString(this.getAmount()));
 		list.add(this.getSender());
