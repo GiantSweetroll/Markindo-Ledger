@@ -407,9 +407,10 @@ public class Methods
 	}
 	
 	public static void openMiscRegistrationForm(MiscItemRegistration form)
-	{
+	{	
 		while(true)
 		{
+			
 			int response = JOptionPane.showConfirmDialog(null, ScrollPaneManager.generateDefaultScrollPane(form, 10, 10), "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null);
 			if (response == JOptionPane.YES_OPTION)
 			{
