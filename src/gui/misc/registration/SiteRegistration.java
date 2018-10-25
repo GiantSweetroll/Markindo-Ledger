@@ -1,5 +1,6 @@
 package gui.misc.registration;
 
+import datadriver.DataDriver;
 import datadriver.Site;
 import gui.input.InputLongText;
 import gui.input.InputText;
@@ -68,5 +69,17 @@ public class SiteRegistration extends MiscItemRegistration
 		this.inputInfo.refresh();
 		this.inputName.refresh();
 	}
-
+	
+	@Override
+	public void setData(DataDriver data)
+	{
+		Site site = (Site)data;
+		this.oldData = site;
+		this.inputName.setData(site.getName());
+		this.inputArea.setData(site.getArea());
+		this.inputCode.setData(site.getID());
+		this.inputInfo.setData(site.getInfo());
+		
+		this.setAsNewEntry(false);
+	}
 }

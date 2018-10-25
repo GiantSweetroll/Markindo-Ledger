@@ -74,7 +74,7 @@ public class MainMenu extends JPanel implements ActionListener
 		this.butMisc.addActionListener(this);
 		
 		//Add to panel
-		this.panelBelow.add(this.butMisc);
+//		this.panelBelow.add(this.butMisc);
 		this.panelBelow.add(this.butExit);
 	}
 	private void initPanelEntryButtons()

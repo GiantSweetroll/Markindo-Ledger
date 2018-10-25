@@ -1,6 +1,7 @@
 package gui.misc.oveview;
 
 import constants.Constants;
+import constants.Globals;
 import datadriver.Site;
 import gui.misc.registration.SiteRegistration;
 import methods.FileOperation;
@@ -16,7 +17,7 @@ public class SiteOverviewPanel extends MiscOverviewPanel
 	public SiteOverviewPanel()
 	{
 		super("Site", 
-				Methods.getDataForTable(FileOperation.loadSite()),
+				FileOperation.loadSite(),
 				Methods.createTableHeaderWithActionCell(Constants.SITE_TABLE_HEADERS),
 				new SiteRegistration());
 	}
@@ -37,7 +38,13 @@ public class SiteOverviewPanel extends MiscOverviewPanel
 	@Override
 	public void refresh() 
 	{
-		this.refresh(Methods.getDataForTable(FileOperation.loadSite()),
+		this.refresh(FileOperation.loadSite(),
 						Methods.createTableHeaderWithActionCell(Constants.SITE_TABLE_HEADERS));
+	}
+	
+	@Override
+	protected void registerMiscItem()
+	{
+		Methods.openMiscRegistrationForm(Globals.registerSite);
 	}
 }

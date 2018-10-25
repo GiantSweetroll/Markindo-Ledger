@@ -135,4 +135,10 @@ public class FileOperation
 		
 		return list;
 	}
+	
+	public static void delete(DataDriver data)
+	{
+		File file = new File(data.getFileFullPath());
+		file.delete();
+	}
 }

@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
-import javax.swing.SwingConstants;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import constants.Constants;
 import constants.Globals;
 import constants.InsetsConstants;
 import datadriver.Alokasi;
@@ -23,8 +21,13 @@ import datadriver.Pengiriman;
 import datadriver.Site;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
+import giantsweetroll.gui.swing.ScrollPaneManager;
+import giantsweetroll.message.MessageManager;
 import giantsweetroll.xml.dom.XMLManager;
-import gui.ActionPanel;
+import gui.misc.registration.MiscItemRegistration;
+import gui.misc.registration.PICRegistration;
+import gui.misc.registration.ProgramRegistration;
+import gui.misc.registration.SiteRegistration;
 import gui.overviewpanel.OverviewPanel;
 import gui.search.SearchFilterPanel;
 
@@ -42,20 +45,32 @@ public class Methods
 		return date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
 	}
 	
-	public static JComponent[][] getDataForTable(List<? extends DataDriver> list)
+	public static String[][] getDataForTable(List<? extends DataDriver> list)
 	{
-		JComponent[][] obj = new JComponent[list.size()][];
+		String[][] obj = new String[list.size()][];
 		
 		for (int i=0; i<list.size(); i++)
 		{
 			String[] arr = list.get(i).getDataArray();
-			JComponent[] arr2 = new JComponent[arr.length + 1];
+			String[] arr2 = new String[arr.length + 3];
 			for (int a=0; a<arr.length; a++)
 			{
-				arr2[a] = new JLabel(arr[a], SwingConstants.CENTER);
+				/*
+				JLabel label = new JLabel(arr[a], SwingConstants.CENTER);
+				label.setOpaque(false);
+				arr2[a] = label;
+				*/
+				arr2[a] = arr[a];
 			}
 			//Add ActionPanel to the last index of arr2
-			arr2[arr2.length-1] = new ActionPanel(list.get(i));
+			/*
+			arr2[arr2.length-3] = new DetailButton(list.get(i));
+			arr2[arr2.length-2] = new EditButton(list.get(i));
+			arr2[arr2.length-1] = new DeleteButton(list.get(i));
+			*/
+			arr2[arr2.length-3] = "Detil";
+			arr2[arr2.length-2] = "Koreksi";
+			arr2[arr2.length-1] = "Hapus";
 			
 			obj[i] = arr2;
 		}
@@ -65,14 +80,17 @@ public class Methods
 	
 	public static String[] createTableHeaderWithActionCell(String[] headers)
 	{
-		String[] arr = new String[headers.length + 1];
+		String[] arr = new String[headers.length + 3];
 		
 		for (int i=0; i<headers.length; i++)
 		{
 			arr[i] = headers[i];
 		}
 		
-		arr[arr.length-1] = Constants.ACTION_CELL_NAME;
+//		arr[arr.length-1] = Constants.ACTION_CELL_NAME;
+		arr[arr.length-3] = "Detil";
+		arr[arr.length-2] = "Koreksi";
+		arr[arr.length-1] = "Hapus";
 		
 		return arr;
 	}
@@ -385,6 +403,55 @@ public class Methods
 		else
 		{
 			return site.getName();
+		}
+	}
+	
+	public static void openMiscRegistrationForm(MiscItemRegistration form)
+	{
+		while(true)
+		{
+			int response = JOptionPane.showConfirmDialog(null, ScrollPaneManager.generateDefaultScrollPane(form, 10, 10), "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null);
+			if (response == JOptionPane.YES_OPTION)
+			{
+				if (form.allFilled())
+				{
+					if (form.isNewEntry())
+					{
+						FileOperation.exportData(form.getData());
+					}
+					else
+					{
+						FileOperation.delete(form.getOldData());
+						FileOperation.exportData(form.getData());
+					}
+					
+					if (form instanceof PICRegistration)
+					{
+						Globals.picOverview.refresh();
+					}
+					else if (form instanceof ProgramRegistration)
+					{
+						Globals.programOverview.refresh();
+					}
+					else if (form instanceof SiteRegistration)
+					{
+						Globals.picOverview.refresh();
+					}
+					
+					form.resetDefaults();
+					form.setAsNewEntry(true);
+					
+					break;
+				}
+				else
+				{
+					MessageManager.showErrorDialog("Tolong masukkan semua data yang kurang", "Input kurang tepat");
+				}
+			}
+			else
+			{
+				break;
+			}
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package gui.misc.oveview;
 
 import constants.Constants;
+import constants.Globals;
 import datadriver.PIC;
 import gui.misc.registration.PICRegistration;
 import methods.FileOperation;
@@ -17,7 +18,7 @@ public class PICOverviewPanel extends MiscOverviewPanel
 	public PICOverviewPanel()
 	{
 		super("PIC", 
-				Methods.getDataForTable(FileOperation.loadPIC()),
+				FileOperation.loadPIC(),
 				Methods.createTableHeaderWithActionCell(Constants.PIC_TABLE_HEADERS),
 				new PICRegistration());
 	}
@@ -37,8 +38,13 @@ public class PICOverviewPanel extends MiscOverviewPanel
 	@Override
 	public void refresh() 
 	{
-		this.refresh(Methods.getDataForTable(FileOperation.loadPIC()),
+		this.refresh(FileOperation.loadPIC(),
 						Methods.createTableHeaderWithActionCell(Constants.PIC_TABLE_HEADERS));
 	}
-
+	
+	@Override
+	protected void registerMiscItem() 
+	{
+		Methods.openMiscRegistrationForm(Globals.registerPIC);
+	}
 }

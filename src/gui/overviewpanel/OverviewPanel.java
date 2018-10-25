@@ -3,13 +3,14 @@ package gui.overviewpanel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import datadriver.DataDriver;
 import gui.AddDataPanel;
 import gui.PageHyperlinkBar;
 import gui.search.SearchFilterPanel;
@@ -32,7 +33,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 	protected int itemNameLastIndex, programLastIndex, areaLastIndex, siteLastIndex, picLastIndex;
 	
 	//Constructors
-	public OverviewPanel(String sectionName, String inputPanelConstant, JComponent[][] data, String[] tableHeaders)
+	public OverviewPanel(String sectionName, String inputPanelConstant, List<? extends DataDriver> data, String[] tableHeaders)
 	{
 		//Initialization
 		this.link = new PageHyperlinkBar(sectionName);

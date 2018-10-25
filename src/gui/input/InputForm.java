@@ -36,6 +36,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	private String prevPanelName, nextPanelName;
 	private JScrollPane scroll;
 	private boolean newEntry;
+	protected DataDriver oldData;
 	
 	//Constants
 	private final String CANCEL = "cancel";

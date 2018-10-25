@@ -13,6 +13,12 @@ import gui.MainMenu;
 import gui.MiscPanel;
 import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
+import gui.misc.oveview.PICOverviewPanel;
+import gui.misc.oveview.ProgramOverviewPanel;
+import gui.misc.oveview.SiteOverviewPanel;
+import gui.misc.registration.PICRegistration;
+import gui.misc.registration.ProgramRegistration;
+import gui.misc.registration.SiteRegistration;
 import gui.pengiriman.InputPengiriman;
 import gui.pengiriman.PengirimanOverview;
 import methods.FileOperation;
@@ -36,6 +42,12 @@ public class Globals
 	public static InputAlokasi alokasiInput;
 	public static InputPengiriman pengirimanInput;
 	public static MiscPanel miscPanel;
+	public static PICRegistration registerPIC;
+	public static ProgramRegistration registerProgram;
+	public static SiteRegistration registerSite;
+	public static PICOverviewPanel picOverview;
+	public static ProgramOverviewPanel programOverview;
+	public static SiteOverviewPanel siteOverview;
 	
 	//Methods
 	public static void reloadProgram()

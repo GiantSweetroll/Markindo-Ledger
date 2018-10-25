@@ -22,7 +22,7 @@ public class PengirimanOverview extends OverviewPanel
 	{
 		super("Pengiriman", 
 				FramePanelConstants.PENGIRIMAN_INPUT,
-				Methods.getDataForTable(Globals.PENGIRIMAN), 
+				Globals.PENGIRIMAN, 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 		
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()])));
@@ -36,7 +36,7 @@ public class PengirimanOverview extends OverviewPanel
 	@Override
 	public void refresh()
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.PENGIRIMAN), 
+		this.getOverviewTablePanel().refresh(Methods.filterPengiriman(), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.AREA, Methods.getListOfAreas());
@@ -47,7 +47,7 @@ public class PengirimanOverview extends OverviewPanel
 	@Override
 	public void filter() 
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterPengiriman()), 
+		this.getOverviewTablePanel().refresh(Methods.filterPengiriman(), 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
 	}
 }

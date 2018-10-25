@@ -74,6 +74,7 @@ public class InputStock extends InputForm
 			this.dateEnter = stock.getDateFirstEntered();
 			this.dateMod = stock.getDateLastModified();
 		}
+		this.setNewEntry(false);
 	}
 
 	@Override

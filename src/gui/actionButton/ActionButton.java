@@ -1,13 +1,10 @@
 package gui.actionButton;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 
 import datadriver.DataDriver;
 
-public abstract class ActionButton extends JButton implements ActionListener
+public abstract class ActionButton extends JButton
 {
 
 	/**
@@ -21,7 +18,6 @@ public abstract class ActionButton extends JButton implements ActionListener
 	{
 		super(text);
 		this.data = data;
-		this.addActionListener(this);
 	}
 	
 	//public methods
@@ -32,10 +28,4 @@ public abstract class ActionButton extends JButton implements ActionListener
 	
 	//Abstract methods
 	public abstract void doAction();
-	
-	//Interface
-	public void actionPerformed(ActionEvent e)
-	{
-		this.doAction();
-	}
 }

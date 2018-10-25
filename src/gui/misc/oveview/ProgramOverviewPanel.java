@@ -1,6 +1,7 @@
 package gui.misc.oveview;
 
 import constants.Constants;
+import constants.Globals;
 import datadriver.Program;
 import gui.misc.registration.ProgramRegistration;
 import methods.FileOperation;
@@ -17,7 +18,7 @@ public class ProgramOverviewPanel extends MiscOverviewPanel
 	public ProgramOverviewPanel()
 	{
 		super("Program", 
-				Methods.getDataForTable(FileOperation.loadProgram()),
+				FileOperation.loadProgram(),
 				Methods.createTableHeaderWithActionCell(Constants.PROGRAM_TABLE_HEADERS),
 				new ProgramRegistration());
 	}
@@ -38,8 +39,13 @@ public class ProgramOverviewPanel extends MiscOverviewPanel
 	@Override
 	public void refresh() 
 	{
-		this.refresh(Methods.getDataForTable(FileOperation.loadProgram()),
+		this.refresh(FileOperation.loadProgram(),
 						Methods.createTableHeaderWithActionCell(Constants.PROGRAM_TABLE_HEADERS));
 	}
 
+	@Override
+	protected void registerMiscItem()
+	{
+		Methods.openMiscRegistrationForm(Globals.registerProgram);
+	}
 }

@@ -19,7 +19,7 @@ public class StockOverview extends OverviewPanel
 	{
 		super("Stok", 
 				FramePanelConstants.STOCK_INPUT,
-				Methods.getDataForTable(Globals.STOCKS), 
+				Globals.STOCKS, 
 				Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
 	}
 	
@@ -27,7 +27,7 @@ public class StockOverview extends OverviewPanel
 	@Override
 	public void refresh() 
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterStock()), 
+		this.getOverviewTablePanel().refresh(Methods.filterStock(), 
 												Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.STOCK, Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]));
 	}
@@ -35,7 +35,7 @@ public class StockOverview extends OverviewPanel
 	@Override
 	public void filter() 
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterStock()), 
+		this.getOverviewTablePanel().refresh(Methods.filterStock(), 
 				Methods.createTableHeaderWithActionCell(Constants.STOCK_TABLE_HEADERS));
 	}
 }

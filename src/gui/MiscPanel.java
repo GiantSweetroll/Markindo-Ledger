@@ -10,11 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import constants.FramePanelConstants;
-import giantsweetroll.gui.swing.ScrollPaneManager;
-import gui.misc.oveview.MiscOverviewPanel;
-import gui.misc.oveview.PICOverviewPanel;
-import gui.misc.oveview.ProgramOverviewPanel;
-import gui.misc.oveview.SiteOverviewPanel;
+import constants.Globals;
 import interfaces.GUIMethods;
 
 public class MiscPanel extends JPanel implements GUIMethods, ActionListener
@@ -27,7 +23,6 @@ public class MiscPanel extends JPanel implements GUIMethods, ActionListener
 
 	private JButton butBack;
 	private JPanel panelBelow, panelCenter;
-	private MiscOverviewPanel miscSite, miscPIC, miscProgram;
 	private JScrollPane scrollCenter;
 	
 	//Constructor
@@ -56,18 +51,15 @@ public class MiscPanel extends JPanel implements GUIMethods, ActionListener
 	{
 		//Initialization
 		this.panelCenter = new JPanel();
-		this.miscSite = new SiteOverviewPanel();
-		this.miscPIC = new PICOverviewPanel();
-		this.miscProgram = new ProgramOverviewPanel();
 		
 		//Properties
 		this.panelCenter.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 		this.panelCenter.setOpaque(false);
 		
 		//Add to panel
-		this.panelCenter.add(this.miscPIC);
-		this.panelCenter.add(this.miscProgram);
-		this.panelCenter.add(this.miscSite);
+		this.panelCenter.add(Globals.picOverview);
+		this.panelCenter.add(Globals.programOverview);
+		this.panelCenter.add(Globals.siteOverview);
 	}
 	public void initPanelBelow()
 	{
@@ -88,18 +80,18 @@ public class MiscPanel extends JPanel implements GUIMethods, ActionListener
 	@Override
 	public void resetDefaults() 
 	{
-		this.miscSite.resetDefaults();
-		this.miscProgram.resetDefaults();
-		this.miscPIC.resetDefaults();
+		Globals.siteOverview.resetDefaults();
+		Globals.programOverview.resetDefaults();
+		Globals.picOverview.resetDefaults();
 	}
 
 	@Deprecated
 	@Override
 	public void refresh() 
 	{
-		this.miscSite.refresh();
-		this.miscProgram.refresh();
-		this.miscPIC.refresh();
+		Globals.siteOverview.refresh();
+		Globals.programOverview.refresh();
+		Globals.picOverview.refresh();
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ public class InputDate extends FormElement
 		super(name);
 		
 		//Initialization
-		this.date = new DateSelectionPanel(true, "Auto", "Default", "Set tanggal ke tanggal sekarang", "Kembalikan tanggal pada sebelumnya");
+		this.date = new DateSelectionPanel(true, "Auto", "Reset", "Set tanggal ke tanggal sekarang", "Kembalikan tanggal pada sebelumnya");
 		
 		//Properties
 		Methods.autoLayout(this.getLayout(), this.date, this.getTitleLabel(), this);

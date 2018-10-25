@@ -9,6 +9,7 @@ import constants.FramePanelConstants;
 import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
+import datadriver.Program;
 import datadriver.Site;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
@@ -38,10 +39,10 @@ public class InputAlokasi extends InputForm
 	{
 		super("Alokasi", FramePanelConstants.ALOKASI_OVERVIEW, FramePanelConstants.ALOKASI_OVERVIEW);
 	
-		this.program = new InputDropDownMenu("Nama Program", Methods.getDisplayNames(Globals.PROGRAMS));
+		this.program = new InputDropDownMenu("Nama Program", Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
 		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]));
 		this.siteInfo = new InputLongText("Deskripsi Site");
-		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.STOCKS))
+		this.item = new InputDropDownMenu("Item", Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]))
 				{
 					/**
 					 * 
@@ -117,11 +118,12 @@ public class InputAlokasi extends InputForm
 	{
 		Alokasi alo = (Alokasi)data;
 		
-		this.program.setData(alo.getProgram());
-		this.site.setData(alo.getSite());
-		this.item.setData(alo.getItem());
-		this.amount.setData(alo.getItemInfo());
-		this.pic.setData(alo.getPIC());
+		this.program.setData(Methods.findDataIndexByKey(Globals.PROGRAMS, alo.getProgram()));
+		this.site.setData(Methods.findDataIndexByKey(Globals.SITES, alo.getSite()));
+		this.item.setData(Methods.findDataIndexByKey(Globals.STOCKS, alo.getItem()));
+		this.itemInfo.setData(alo.getItemInfo());
+		this.amount.setData(Long.toString(alo.getAmount()));
+		this.pic.setData(Methods.findDataIndexByKey(Globals.PICS, alo.getPIC()));
 		this.dateInput = alo.getUploadDate();
 		
 		this.setNewEntry(false);
@@ -157,7 +159,7 @@ public class InputAlokasi extends InputForm
 	@Override
 	public boolean canExport()
 	{
-		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(Methods.findDataIndexByDisplayName(Globals.STOCKS, this.item.getData().toString())).getItemCount() ||
+		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount() ||
 				Long.parseLong(this.amount.getData()) <= 0)
 		{
 			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah alokasi tidak sesuai");

@@ -13,6 +13,12 @@ import constants.Globals;
 import giantsweetroll.GMisc;
 import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
+import gui.misc.oveview.PICOverviewPanel;
+import gui.misc.oveview.ProgramOverviewPanel;
+import gui.misc.oveview.SiteOverviewPanel;
+import gui.misc.registration.PICRegistration;
+import gui.misc.registration.ProgramRegistration;
+import gui.misc.registration.SiteRegistration;
 import gui.pengiriman.InputPengiriman;
 import gui.pengiriman.PengirimanOverview;
 import methods.Methods;
@@ -65,9 +71,15 @@ public class MainFrame
 		Globals.stockInput = new InputStock();
 		Globals.alokasiOverview = new AlokasiOverview();
 		Globals.alokasiInput = new InputAlokasi();
-		Globals.miscPanel = new MiscPanel();
 		Globals.pengirimanOverview = new PengirimanOverview();
 		Globals.pengirimanInput = new InputPengiriman();
+		Globals.registerPIC = new PICRegistration();
+		Globals.registerProgram = new ProgramRegistration();
+		Globals.registerSite = new SiteRegistration();
+		Globals.picOverview = new PICOverviewPanel();
+		Globals.programOverview = new ProgramOverviewPanel();
+		Globals.siteOverview = new SiteOverviewPanel();
+		Globals.miscPanel = new MiscPanel();
 	}
 	
 	public static void changePanel(String keyword)

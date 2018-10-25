@@ -64,6 +64,10 @@ public class InputDropDownMenu extends FormElement
 	{
 		return this.combo.getSelectedItem();
 	}
+	public void setData(int index)
+	{
+		this.combo.setSelectedIndex(index);
+	}
 	
 	//Overridden Methods
 	@Override

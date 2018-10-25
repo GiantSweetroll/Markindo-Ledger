@@ -4,15 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import datadriver.DataDriver;
 import giantsweetroll.gui.swing.ScrollPaneManager;
 import gui.misc.registration.MiscItemRegistration;
 import gui.table.OverviewTablePanel;
@@ -38,7 +38,7 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 							REFRESH = "refresh";
 	
 	//Constructor
-	public MiscOverviewPanel(String name, JComponent[][] components, String[] headers, MiscItemRegistration reg)
+	public MiscOverviewPanel(String name, List<? extends DataDriver> components, String[] headers, MiscItemRegistration reg)
 	{
 		//Initialization
 		this.initPanelBelow();
@@ -83,7 +83,7 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 	{
 		return this.reg;
 	}
-	protected void refresh(JComponent[][] components, String[] headers)
+	protected void refresh(List<? extends DataDriver> components, String[] headers)
 	{
 		this.overview.refresh(components, headers);
 		this.scroll.setViewportView(this.overview);
@@ -95,6 +95,7 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 	
 	//Abstract Methods
 	public abstract void saveData();
+	protected abstract void registerMiscItem();
 	
 	//Interfaces
 	@Override
@@ -103,26 +104,7 @@ public abstract class MiscOverviewPanel extends JPanel implements GUIMethods, Ac
 		switch(e.getActionCommand())
 		{
 			case ADD:
-				while(true)
-				{
-					if (JOptionPane.showConfirmDialog(null, this.reg, "", JOptionPane.YES_NO_CANCEL_OPTION) != JOptionPane.YES_OPTION)
-					{
-						break;
-					}
-					else
-					{
-						if (this.reg.allFilled())
-						{
-							this.saveData();
-							this.refresh();
-							break;
-						}
-						else
-						{
-							JOptionPane.showMessageDialog(null, "Mohon isi semua data dengan tepat");
-						}
-					}
-				}
+				this.registerMiscItem();
 				break;
 				
 			case REFRESH:

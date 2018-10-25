@@ -33,6 +33,7 @@ public class DetailPanel extends JPanel
 	public DetailPanel(DataDriver data)
 	{
 		this.data = data;
+		this.c = new GridBagConstraints();
 		this.init();
 	}
 	

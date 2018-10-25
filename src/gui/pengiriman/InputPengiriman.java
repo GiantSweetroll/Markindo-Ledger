@@ -11,6 +11,7 @@ import constants.Globals;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
 import datadriver.Pengiriman;
+import datadriver.Program;
 import datadriver.Site;
 import giantsweetroll.date.Date;
 import giantsweetroll.message.MessageManager;
@@ -43,10 +44,10 @@ public class InputPengiriman extends InputForm
 		super("Tambah Pengiriman", FramePanelConstants.PENGIRIMAN_OVERVIEW, FramePanelConstants.PENGIRIMAN_OVERVIEW);
 	
 		//Initialization
-		this.program = new InputDropDownMenu("Nama Program", Methods.getDisplayNames(Globals.PROGRAMS));
-		this.site = new InputDropDownMenu("Site", Methods.getDisplayNames(Globals.SITES));
+		this.program = new InputDropDownMenu("Nama Program", Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
+		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]));
 		this.siteDesc = new InputLongText("Deskripsi Site");
-		this.item = new InputDropDownMenu("Item", Methods.getDisplayNames(Globals.ALOKASI))
+		this.item = new InputDropDownMenu("Item", Globals.ALOKASI.toArray(new Alokasi[Globals.ALOKASI.size()]))
 				{
 
 					/**
@@ -118,6 +119,11 @@ public class InputPengiriman extends InputForm
 		send.setReceiver(this.penerima.getData());
 		send.setInfoFromSite(this.infoFromSite.getData());
 		
+		if (!this.isNewEntry())
+		{
+			send.setID(((Pengiriman)this.oldData).getID());
+		}
+		
 		return send;
 	}
 
@@ -126,14 +132,17 @@ public class InputPengiriman extends InputForm
 	{
 		Pengiriman send = (Pengiriman)data;
 		
-		this.program.setData(send.getProgram());
-		this.item.setData(send.getItemName());
+		this.program.setData(Methods.findDataIndexByKey(Globals.PROGRAMS, send.getProgram()));
+		this.item.setData(Methods.findDataIndexByKey(Globals.ALOKASI, send.getItemName()));
 		this.site.setData(send.getSite());
 		this.itemCount.setData(Long.toString(send.getAmount()));
 		this.sender.setData(send.getSender());
 		this.penerima.setData(send.getReceiver());
 		this.infoFromSite.setData(send.getInfoFromSite());
 		this.datePengiriman.setDate(send.getDateSent());
+		
+		this.oldData = send;
+		this.setNewEntry(false);
 	}
 
 	@Override
@@ -152,6 +161,12 @@ public class InputPengiriman extends InputForm
 		if (this.isNewEntry())
 		{
 			alokasi.setAmount(alokasi.getAmount() - Long.parseLong(this.itemCount.getData()));
+		}
+		else
+		{
+			//Change back alokasi values
+			long difference = ((Pengiriman)this.oldData).getAmount() - ((Pengiriman)this.getData()).getAmount();
+			alokasi.setAmount(alokasi.getAmount() + difference);
 		}
 		FileOperation.exportData(alokasi);
 		Globals.alokasiOverview.refresh();

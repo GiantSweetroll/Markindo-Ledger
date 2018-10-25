@@ -50,5 +50,12 @@ public class ProgramRegistration extends MiscItemRegistration
 	{
 		this.inputName.refresh();
 	}
-
+	
+	@Override
+	public void setData(DataDriver data)
+	{
+		Program prog = (Program)data;
+		this.inputName.setData(prog.getName());
+		this.setAsNewEntry(false);
+	}
 }

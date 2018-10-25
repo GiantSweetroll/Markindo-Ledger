@@ -23,7 +23,7 @@ public class AlokasiOverview extends OverviewPanel
 	{
 		super("Alokasi", 
 				FramePanelConstants.ALOKASI_INPUT,
-				Methods.getDataForTable(Globals.ALOKASI), 
+				Globals.ALOKASI, 
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 		
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Methods.getDisplayNames(Globals.PROGRAMS)));
@@ -36,7 +36,7 @@ public class AlokasiOverview extends OverviewPanel
 	@Override
 	public void refresh()
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Globals.ALOKASI), 
+		this.getOverviewTablePanel().refresh(Methods.filterAlokasi(), 
 												Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
 		this.getSearchFilterPanel().updateItem(SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()]));
@@ -48,7 +48,7 @@ public class AlokasiOverview extends OverviewPanel
 	@Override
 	public void filter() 
 	{
-		this.getOverviewTablePanel().refresh(Methods.getDataForTable(Methods.filterAlokasi()), 
+		this.getOverviewTablePanel().refresh(Methods.filterAlokasi(), 
 				Methods.createTableHeaderWithActionCell(Constants.ALOKASI_TABLE_HEADERS));
 	}
 }

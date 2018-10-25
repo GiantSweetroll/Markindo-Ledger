@@ -1,13 +1,10 @@
 package gui.table;
 
 import java.awt.Color;
-import java.awt.Component;
 
-import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.table.TableCellRenderer;
 
-public class OverviewTable extends JTable implements TableCellRenderer
+public class OverviewTable extends JTable
 {
 
 	/**
@@ -15,12 +12,12 @@ public class OverviewTable extends JTable implements TableCellRenderer
 	 */
 	private static final long serialVersionUID = -5539384614204097615L;
 
-	private JComponent[][] components;
+	private String[][] components;
 	
-	public OverviewTable(JComponent[][] data, String[] columns)
+	public OverviewTable(String[][] data, String[] columns)
 	{
 		super(data, columns);
-		this.setModel(new CustomTableModel(data, columns));
+//		this.setModel(new CustomTableModel(data, columns));
 		
 		this.components = data;
 		
@@ -42,11 +39,12 @@ public class OverviewTable extends JTable implements TableCellRenderer
 //		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		//Makes the height the same as the button panel
+		/*
 		try
 		{
 			this.setRowHeight(data[0][data[0].length-1].getPreferredSize().height);
 		}
-		catch(ArrayIndexOutOfBoundsException ex) {}
+		catch(ArrayIndexOutOfBoundsException ex) {}		*/
 		
 		//Center align cells data
 		/*
@@ -58,11 +56,17 @@ public class OverviewTable extends JTable implements TableCellRenderer
 		}*/
 	}
 
+	//Public Methods
+	public String[][] getTableData()
+	{
+		return this.components;
+	}
+	
 	//Override Methods
 	@Override
 	public boolean isCellEditable(int row, int column)		//Make the table data un-editable (except the buttons column)
 	{
-		if (column == this.getColumnCount()-1)
+		if (column >= this.getColumnCount()-3)
 		{
 			return true;
 		}
@@ -71,13 +75,13 @@ public class OverviewTable extends JTable implements TableCellRenderer
 			return false;
 		}
 	}
-	
+	/*
 	@Override
     public Class<?> getColumnClass(int column)
     {
 		return getValueAt(0, column).getClass();
-    }
-	
+    }		*/
+	/*
 	@Override
 	public Component prepareRenderer(TableCellRenderer r, int row, int column)
 	{
@@ -111,27 +115,27 @@ public class OverviewTable extends JTable implements TableCellRenderer
 		
 		return c;
 	}
-	
+	*/
 	@Override
 	public boolean getScrollableTracksViewportWidth()			//Resizes the table cells width to its preferred size or the viewport size, whichever is greater
 	{
 		return getPreferredSize().width < getParent().getWidth();
 	}
-	
+	/*
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int col)
 	{
 		return this;
 	}
 
+	
 	@Override
 	public Component getTableCellRendererComponent(JTable arg0, Object arg1, boolean arg2, boolean arg3, int arg4,
 			int arg5) {
 		 return (Component) arg1;
-	}
-
+	}		
 	@Override
 	public Object getValueAt(int row, int count) {
 		return this.components[row][count];
-	}
+	}*/
 }
