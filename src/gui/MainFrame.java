@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import constants.FontConstants;
 import constants.FramePanelConstants;
 import constants.Globals;
-import giantsweetroll.GMisc;
+import giantsweetroll.GGUtilities;
 import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
 import gui.misc.oveview.PICOverviewPanel;
@@ -39,7 +39,7 @@ public class MainFrame
 		
 		//Properties
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize((GMisc.getScreenSize().width/4)*3, (GMisc.getScreenSize().height/4)*3);
+		frame.setSize((GGUtilities.getScreenSize().width/4)*3, (GGUtilities.getScreenSize().height/4)*3);
 		frame.setLocationRelativeTo(null);
 //		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //		frame.setUndecorated(true);
@@ -90,7 +90,7 @@ public class MainFrame
 	
 	public static void main(String args[])
 	{
-		GMisc.setUIFont(FontConstants.FONT_NAME_GENERAL, Font.PLAIN, FontConstants.FONT_SIZE_GENERAL);
+		GGUtilities.setUIFont(FontConstants.FONT_NAME_GENERAL, Font.PLAIN, FontConstants.FONT_SIZE_GENERAL);
 		SwingUtilities.invokeLater(new Runnable() {
 				public void run()
 				{
