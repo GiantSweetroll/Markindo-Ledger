@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import datadriver.DataDriver;
 import gui.AddDataPanel;
+import gui.BannerPanel;
 import gui.PageHyperlinkBar;
 import gui.search.SearchFilterPanel;
 import gui.table.OverviewTablePanel;
@@ -24,6 +25,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 	 */
 	private static final long serialVersionUID = 915590567046127765L;
 
+	private BannerPanel panelBanner;
 	private PageHyperlinkBar link;
 	private AddDataPanel panelAddAData;
 	private SearchFilterPanel panelFilter;
@@ -41,6 +43,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 		this.panelFilter = new SearchFilterPanel(this);
 		this.tablePanel = new OverviewTablePanel(data, tableHeaders);
 		this.butRefresh = new JButton("Refresh");
+		this.panelBanner = new BannerPanel();
 		
 		//Properties
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -49,6 +52,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 		this.butRefresh.addActionListener(this);
 		
 		//Add to panel
+		this.add(this.panelBanner);
 		this.add(this.link);
 		this.add(this.panelAddAData);
 		this.add(this.panelFilter);

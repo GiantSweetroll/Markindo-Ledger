@@ -149,7 +149,7 @@ public class Methods
 	{
 		layout.putConstraint(SpringLayout.WEST, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.WEST, parent);
 		layout.putConstraint(SpringLayout.NORTH, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.SOUTH, c2);
-		layout.putConstraint(SpringLayout.EAST, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.EAST, parent);
+//		layout.putConstraint(SpringLayout.EAST, c1, InsetsConstants.GENERAL_INSETS_SIZE, SpringLayout.EAST, parent);
 	}
 	
 	public static String[] getListOfAreas()
@@ -240,11 +240,14 @@ public class Methods
 		try
 		{
 			filterKey = filter.getAreaFilter();
-			for (Alokasi alok : alokasi)
+			if (filterKey!=null || !filterKey.equals("null"))
 			{
-				if (Methods.getSiteByID(alok.getSite()).getArea().equals(filterKey))
+				for (Alokasi alok : alokasi)
 				{
-					temp.add(alok);
+					if (Methods.getSiteByID(alok.getSite()).getArea().equals(filterKey))
+					{
+						temp.add(alok);
+					}
 				}
 			}
 			alokasi = temp;
@@ -329,7 +332,7 @@ public class Methods
 		try
 		{
 			filterKey = filter.getAreaFilter();
-			if(!filterKey.equals(""))
+			if(!filterKey.equals("") || !filterKey.equals("null") || filterKey!=null)
 			{
 				for (Pengiriman alok : alokasi)
 				{

@@ -24,7 +24,6 @@ public class PengirimanOverview extends OverviewPanel
 				FramePanelConstants.PENGIRIMAN_INPUT,
 				Globals.PENGIRIMAN, 
 				Methods.createTableHeaderWithActionCell(Constants.PENGIRIMAN_TABLE_HEADERS));
-		
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Program", SearchFilterItem.PROGRAM, Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()])));
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Area", SearchFilterItem.AREA, Methods.getListOfAreas()));
 		this.getSearchFilterPanel().addFilter(new SearchFilterItem("Site", SearchFilterItem.SITE, Globals.SITES.toArray(new Site[Globals.SITES.size()])));

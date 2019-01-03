@@ -44,8 +44,8 @@ public class AddDataPanel extends JPanel implements ActionListener
 		
 		//Add to panel
 		this.add(this.butAdd);
-		this.add(this.labSeparator);
-		this.add(this.butUpload);
+//		this.add(this.labSeparator);
+//		this.add(this.butUpload);
 	}
 	
 	//Interfaces

@@ -29,6 +29,7 @@ public class DeleteButton extends ActionButton
 	public void doAction()
 	{
 		int response = JOptionPane.showConfirmDialog(null, "Apakah anda benar ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_CANCEL_OPTION);
+		System.out.println("Wolololo " + this.getLinkedData().getFileFullPath());
 		if (response == JOptionPane.YES_OPTION)
 		{
 			FileOperation.delete(this.getLinkedData());

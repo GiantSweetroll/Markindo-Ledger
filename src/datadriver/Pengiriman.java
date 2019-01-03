@@ -49,9 +49,9 @@ public class Pengiriman extends DataDriver
 		this.setFolderPath(Constants.PENGIRIMAN_FOLDER_PATH + "/" +
 							this.getProgram() + "/" +
 							this.getSite() + "/" +
-							dateSent.getDay() + "/" +
+							dateSent.getYear() + "/" +
 							dateSent.getMonth() + "/" +
-							dateSent.getYear() + "/");
+							dateSent.getDay() + "/");
 	}
 	
 	//Methods

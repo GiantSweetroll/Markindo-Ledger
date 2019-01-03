@@ -30,6 +30,9 @@ public class DeleteActionEditor extends ActionButtonEditor
 	public void clickedAction()
 	{
 		int response = JOptionPane.showConfirmDialog(null, "Apakah anda benar ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_CANCEL_OPTION);
+		System.out.println(Globals.STOCKS.get(0).getFileFullPath());
+		System.out.println(Globals.ALOKASI.get(0).getFileFullPath());
+		System.out.println(Globals.PENGIRIMAN.get(0).getFileFullPath());
 		if (response == JOptionPane.YES_OPTION)
 		{
 			DataDriver data = this.getData().get(this.getSelectedIndex());

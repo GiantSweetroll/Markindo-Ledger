@@ -18,7 +18,7 @@ public class Constants
 	public static final String ACTION_CELL_NAME = "Aksi";
 	
 	public static final String[] STOCK_TABLE_HEADERS = {"Item", "Jumlah", "Tanggal Input", "Tanggal Modifikasi Terakhir"};
-	public static final String[] ALOKASI_TABLE_HEADERS = {"Program", "Site", "Item", "Alokasi"};
+	public static final String[] ALOKASI_TABLE_HEADERS = {"Program", "Site", "Item", "Sisa Alokasi"};
 	public static final String[] SITE_TABLE_HEADERS = {"Nama Site", "Area", "Info"};
 	public static final String[] PIC_TABLE_HEADERS = {"PIC"};
 	public static final String[] PROGRAM_TABLE_HEADERS = {"Program"};
