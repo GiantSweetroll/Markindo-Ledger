@@ -3,12 +3,10 @@ package gui.input;
 import java.awt.Color;
 
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 import constants.Constants;
 import giantsweetroll.filters.LongFilter;
 import giantsweetroll.gui.swing.GTextField;
-import methods.Methods;
 
 public class InputAmount extends FormElement
 {
@@ -26,15 +24,15 @@ public class InputAmount extends FormElement
 		super(name);
 		//Initialization
 		this.tf = new GTextField("", 20, new LongFilter(0L, Long.MAX_VALUE));
-		SpringLayout layout = this.getLayout();
+//		SpringLayout layout = this.getLayout();
 		
 		//Properties
 		this.tf.addActionListener(this);
-		Methods.autoLayout(layout, this.tf, this.getTitleLabel(), this);
+//		Methods.autoLayout(layout, this.tf, this.getTitleLabel(), this);
 		this.tf.setCaretColor(Color.WHITE);
 		
 		//Add to panel
-		this.add(this.tf);
+		this.addComponent(this.tf);
 	}
 	
 	//Overridden Methods

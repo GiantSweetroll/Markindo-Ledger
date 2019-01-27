@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JTextField;
 
 import constants.Constants;
-import methods.Methods;
 
 public class InputText extends FormElement
 {
@@ -26,11 +25,11 @@ public class InputText extends FormElement
 		
 		//Properties
 		this.tf.addActionListener(this);
-		Methods.autoLayout(this.getLayout(), this.tf, this.getTitleLabel(), this);
+//		Methods.autoLayout(this.getLayout(), this.tf, this.getTitleLabel(), this);
 		this.tf.setCaretColor(Color.WHITE);
 		
 		//Add to panel
-		this.add(this.tf);
+		this.addComponent(this.tf);
 	}
 	
 	@Override

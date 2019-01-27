@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import javax.swing.SpringLayout;
 
-import methods.Methods;
 import renderers.ComboBoxObjectRenderer;
 
 public class InputDropDownMenu extends FormElement
@@ -27,15 +25,15 @@ public class InputDropDownMenu extends FormElement
 		//Initialization
 		this.combo = new JComboBox<Object>(items);
 		this.items = items;
-		SpringLayout layout = this.getLayout();
+//		SpringLayout layout = this.getLayout();
 		
 		//Properties
 		this.combo.addActionListener(this);
 		this.combo.setRenderer(new ComboBoxObjectRenderer());
-		Methods.autoLayout(layout, this.combo, this.getTitleLabel(), this);
+//		Methods.autoLayout(layout, this.combo, this.getTitleLabel(), this);
 		
 		//Add to panel
-		this.add(this.combo);
+		this.addComponent(this.combo);
 	}
 	
 	//Methods

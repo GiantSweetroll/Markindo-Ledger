@@ -2,7 +2,6 @@ package gui.input;
 
 import giantsweetroll.date.Date;
 import giantsweetroll.date.DateSelectionPanel;
-import methods.Methods;
 
 public class InputDate extends FormElement
 {
@@ -22,10 +21,10 @@ public class InputDate extends FormElement
 		this.date = new DateSelectionPanel(true, "Auto", "Reset", "Set tanggal ke tanggal sekarang", "Kembalikan tanggal pada sebelumnya");
 		
 		//Properties
-		Methods.autoLayout(this.getLayout(), this.date, this.getTitleLabel(), this);
+//		Methods.autoLayout(this.getLayout(), this.date, this.getTitleLabel(), this);
 		
 		//Add to panel
-		this.add(this.date);
+		this.addComponent(this.date);
 	}
 	
 	//Methods

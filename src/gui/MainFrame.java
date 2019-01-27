@@ -39,7 +39,7 @@ public class MainFrame
 	public MainFrame()
 	{
 		//Initialization
-		frame = new JFrame();
+		frame = new JFrame("Markindo Ledger");
 		panel = new JPanel();
 		this.initComponents();
 		
@@ -100,7 +100,7 @@ public class MainFrame
 		UIManager.put("Panel.background", Constants.PANEL_COLOR);
 		UIManager.put("Label.foreground", Color.WHITE);
 		UIManager.put("Button.foreground", Color.WHITE);
-//		UIManager.put("Button.font", FontConstants.GENERAL_FONT_BOLD);
+		UIManager.put("Button.font", FontConstants.GENERAL_FONT_BOLD);
 //		UIManager.put("Button.background", new Color(192, 195, 198));
 		UIManager.put("Button.background", Constants.BUTTON_COLOR);
 		UIManager.put("TabbedPane.background", new Color (67, 70, 75));

@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import constants.FontConstants;
 import constants.InsetsConstants;
 import datadriver.Alokasi;
 import datadriver.DataDriver;
@@ -59,6 +60,7 @@ public class DetailPanel extends JPanel
 		
 		//Properties
 		this.panelTop.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.labelTitle.setFont(FontConstants.GENERAL_FONT_BOLD);
 		
 		//Add to panel
 		this.panelTop.add(this.labelTitle);

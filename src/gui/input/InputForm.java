@@ -3,6 +3,8 @@ package gui.input;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import constants.Constants;
+import constants.InsetsConstants;
 import datadriver.DataDriver;
 import giantsweetroll.gui.swing.ScrollPaneManager;
 import giantsweetroll.message.MessageManager;
@@ -44,7 +46,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	private BannerPanel banner;
 	private boolean newEntry;
 	protected DataDriver oldData;
-//	private GridBagConstraints c;
+	private GridBagConstraints c;
 	
 	//Constants
 	private final String CANCEL = "cancel";
@@ -105,12 +107,12 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		//Initialization
 		this.panelForm = new JPanel();
 		this.labName = new JLabel(" " + formName);
-//		this.c = new GridBagConstraints();
+		this.c = new GridBagConstraints();
 		
 		//Properties
-		this.panelForm.setLayout(new BoxLayout(this.panelForm, BoxLayout.Y_AXIS));
+//		this.panelForm.setLayout(new BoxLayout(this.panelForm, BoxLayout.Y_AXIS));
 //		this.panelForm.setLayout(new GridLayout(0, 1));
-//		this.panelCenter.setLayout(new GridBagLayout());
+		this.panelForm.setLayout(new GridBagLayout());
 //		this.panelForm.setBackground(Color.white);
 		this.panelForm.setBorder(BorderFactory.createRaisedBevelBorder());
 		this.panelForm.setBackground(Constants.PANEL_COLOR_2);
@@ -120,16 +122,29 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	//	Gbm.goToOrigin(c);
 	//	this.panelCenter.add(this.labName, c);
 	//	Gbm.newGridLine(c);
-		this.panelForm.add(this.labName);
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		c.insets = InsetsConstants.GENERAL;
+		c.weighty = 1.0;
+		c.weightx = 1.0;
+		c.anchor = GridBagConstraints.WEST;
+		this.panelForm.add(this.labName, c);
 	}
 	private void initPanelCenter(String formName)
 	{
 		//Initialization
-		this.panelCenter = new JPanel(new GridLayout(1, 0));
+		this.panelCenter = new JPanel();
 		this.initPanelForm(formName);
 		this.scroll = ScrollPaneManager.generateDefaultScrollPane(this.panelForm, 10, 10);
 		
+		//Properties
+		this.panelCenter.setLayout(new GridLayout(1, 0));
+	//	this.panelCenter.setLayout(new BorderLayout(10, 10));
+		
 		//Add to panel
+	/*
+		this.panelCenter.add(new JPanel(), BorderLayout.WEST);
+		this.panelCenter.add(this.scroll, BorderLayout.CENTER);
+		this.panelCenter.add(new JPanel(), BorderLayout.EAST);	*/
 		this.panelCenter.add(new JPanel());
 		this.panelCenter.add(this.scroll);
 		this.panelCenter.add(new JPanel());
@@ -139,9 +154,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	public void addFormElement(FormElement element)
 	{
 		this.formElements.add(element);
-		this.panelForm.add(element);
-		this.panelForm.revalidate();
-		this.panelForm.repaint();
+		this.panelForm.add(element, c);
 	//	this.panelCenter.add(element, c);
 	//	Gbm.newGridLine(c);
 	}

@@ -59,6 +59,7 @@ public class InputPengiriman extends InputForm
 					public void actionPerformed(ActionEvent e)
 					{
 						updateSisaAlokasi();
+						updateItemInfo();
 					}
 				};
 		this.sisaAlokasi = new InputAmount("Sisa Alokasi");
@@ -71,6 +72,7 @@ public class InputPengiriman extends InputForm
 		
 		//Properties
 		this.updateSisaAlokasi();
+		this.updateItemInfo();
 		this.siteDesc.setEnabled(false);
 		this.sisaAlokasi.setEnabled(false);
 		this.itemDesc.setEnabled(false);
@@ -96,6 +98,10 @@ public class InputPengiriman extends InputForm
 	private void updateSisaAlokasi()
 	{
 		sisaAlokasi.setData(Long.toString(Globals.ALOKASI.get(this.item.getSelectedIndex()).getAmount()));
+	}
+	private void updateItemInfo()
+	{
+		this.itemDesc.setData(Globals.ALOKASI.get(this.item.getSelectedIndex()).getItemInfo());
 	}
 	
 	//Public Methods
