@@ -3,6 +3,7 @@ package gui;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -37,6 +38,8 @@ public class AddDataPanel extends JPanel implements ActionListener
 		//Properties
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.setOpaque(false);
+		this.butAdd.setMnemonic(KeyEvent.VK_T);
+		this.butUpload.setMnemonic(KeyEvent.VK_U);
 		this.butAdd.setActionCommand(this.ADD);
 		this.butUpload.setActionCommand(this.UPLOAD);
 		this.butAdd.addActionListener(this);

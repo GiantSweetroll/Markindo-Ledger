@@ -3,6 +3,7 @@ package gui.overviewpanel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -50,6 +51,7 @@ public abstract class OverviewPanel extends JPanel implements ActionListener
 		this.setOpaque(false);
 		this.panelFilter.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.butRefresh.addActionListener(this);
+		this.butRefresh.setMnemonic(KeyEvent.VK_R);
 		
 		//Add to panel
 		this.add(this.panelBanner);

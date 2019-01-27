@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -70,6 +71,7 @@ public class MainMenu extends JPanel implements ActionListener
 		this.panelBelow.setOpaque(false);
 		this.butExit.setActionCommand(this.EXIT);
 		this.butExit.addActionListener(this);
+		this.butExit.setMnemonic(KeyEvent.VK_E);
 		this.butMisc.setActionCommand(this.MISC);
 		this.butMisc.addActionListener(this);
 		
@@ -104,10 +106,13 @@ public class MainMenu extends JPanel implements ActionListener
 		this.panelEntryButtons.setOpaque(false);
 		this.butAloc.setActionCommand(this.ALOKASI);
 		this.butAloc.addActionListener(this);
+		this.butAloc.setMnemonic(KeyEvent.VK_A);
 		this.butSend.setActionCommand(this.PENGIRIMAN);
 		this.butSend.addActionListener(this);
+		this.butSend.setMnemonic(KeyEvent.VK_P);
 		this.butStock.setActionCommand(this.STOK);
 		this.butStock.addActionListener(this);
+		this.butStock.setMnemonic(KeyEvent.VK_S);
 		
 		//Add to panel
 		this.panelEntryButtons.add(this.butAloc);

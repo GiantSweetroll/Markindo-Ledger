@@ -2,6 +2,7 @@ package gui.input;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -134,6 +135,8 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 	{
 		this.formElements.add(element);
 		this.panelForm.add(element);
+		this.panelForm.revalidate();
+		this.panelForm.repaint();
 	//	this.panelCenter.add(element, c);
 	//	Gbm.newGridLine(c);
 	}
