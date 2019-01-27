@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import constants.Constants;
+
 public class AddDataPanel extends JPanel implements ActionListener
 {
 
@@ -37,7 +39,8 @@ public class AddDataPanel extends JPanel implements ActionListener
 		
 		//Properties
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.setOpaque(false);
+//		this.setOpaque(false);
+		this.setBackground(Constants.MENU_BAR_COLOR);
 		this.butAdd.setMnemonic(KeyEvent.VK_T);
 		this.butUpload.setMnemonic(KeyEvent.VK_U);
 		this.butAdd.setActionCommand(this.ADD);

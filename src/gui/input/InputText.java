@@ -1,7 +1,10 @@
 package gui.input;
 
+import java.awt.Color;
+
 import javax.swing.JTextField;
 
+import constants.Constants;
 import methods.Methods;
 
 public class InputText extends FormElement
@@ -24,6 +27,7 @@ public class InputText extends FormElement
 		//Properties
 		this.tf.addActionListener(this);
 		Methods.autoLayout(this.getLayout(), this.tf, this.getTitleLabel(), this);
+		this.tf.setCaretColor(Color.WHITE);
 		
 		//Add to panel
 		this.add(this.tf);
@@ -34,6 +38,14 @@ public class InputText extends FormElement
 	{
 		super.setEnabled(enabled);
 		this.tf.setEnabled(enabled);
+		if (!enabled)
+		{
+			this.tf.setBackground(Constants.TEXT_FIELD_DISABLED_COLOR);
+		}
+		else
+		{
+			this.tf.setBackground(Constants.TEXT_FIELD_ENABLED_COLOR);
+		}
 	}
 	
 	@Override

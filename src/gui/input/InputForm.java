@@ -1,13 +1,12 @@
 package gui.input;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import constants.Constants;
 import datadriver.DataDriver;
 import giantsweetroll.gui.swing.ScrollPaneManager;
 import giantsweetroll.message.MessageManager;
@@ -62,7 +62,6 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		this.initPanelBelow();
 		this.initPanelCenter(formName);
 		this.banner = new BannerPanel();
-		
 		this.formElements = new ArrayList<FormElement>();
 		this.prevPanelName = prevPanelName;
 		this.nextPanelName = nextPanelName;
@@ -71,6 +70,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		//Properties
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
+		this.banner.setBorder(BorderFactory.createRaisedSoftBevelBorder());
 		
 		//Add to panel
 		this.add(this.banner, BorderLayout.NORTH);
@@ -86,7 +86,11 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		
 		//Properties
 		this.panelBelow.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-		this.panelBelow.setOpaque(false);
+//		this.panelBelow.setOpaque(false);
+		this.panelBelow.setBackground(Constants.MENU_BAR_COLOR);
+		this.panelBelow.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+		this.butCancel.setMnemonic(KeyEvent.VK_B);
+		this.butSave.setMnemonic(KeyEvent.VK_S);
 		this.butCancel.setActionCommand(this.CANCEL);
 		this.butSave.setActionCommand(this.SAVE);
 		this.butCancel.addActionListener(this);
@@ -108,7 +112,8 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 //		this.panelForm.setLayout(new GridLayout(0, 1));
 //		this.panelCenter.setLayout(new GridBagLayout());
 //		this.panelForm.setBackground(Color.white);
-		this.panelForm.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.panelForm.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.panelForm.setBackground(Constants.PANEL_COLOR_2);
 		this.labName.setFont(new Font("calibri", Font.BOLD, 20));
 		
 		//Add to panel

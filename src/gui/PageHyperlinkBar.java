@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import constants.Constants;
 import constants.FramePanelConstants;
 
 public class PageHyperlinkBar extends JPanel implements ActionListener
@@ -30,7 +31,8 @@ public class PageHyperlinkBar extends JPanel implements ActionListener
 		
 		//Properties
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.setOpaque(false);
+//		this.setOpaque(false);
+		this.setBackground(Constants.MENU_BAR_COLOR);
 		this.butMenu.addActionListener(this);
 		this.butMenu.setMnemonic(KeyEvent.VK_M);
 		

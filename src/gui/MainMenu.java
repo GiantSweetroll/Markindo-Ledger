@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -46,13 +45,13 @@ public class MainMenu extends JPanel implements ActionListener
 	private void init()
 	{
 		//Initialization
-		this.labLogo = new JLabel(ImageManager.getImageIcon(URLConstants.MARKINDO_LOGO));
+		this.labLogo = new JLabel(ImageManager.getImageIcon(URLConstants.MARKINDO_LOGO_2));
 		this.initPanelCenter();
 		this.initPanelBelow();
 		
 		//Properties
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.WHITE);
+	//	this.setBackground(Color.WHITE);
 		
 		//Add to panel
 		this.add(this.labLogo, BorderLayout.NORTH);

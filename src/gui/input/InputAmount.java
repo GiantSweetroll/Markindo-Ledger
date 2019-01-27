@@ -1,8 +1,11 @@
 package gui.input;
 
+import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import constants.Constants;
 import giantsweetroll.filters.LongFilter;
 import giantsweetroll.gui.swing.GTextField;
 import methods.Methods;
@@ -28,6 +31,7 @@ public class InputAmount extends FormElement
 		//Properties
 		this.tf.addActionListener(this);
 		Methods.autoLayout(layout, this.tf, this.getTitleLabel(), this);
+		this.tf.setCaretColor(Color.WHITE);
 		
 		//Add to panel
 		this.add(this.tf);
@@ -39,6 +43,14 @@ public class InputAmount extends FormElement
 	{
 		super.setEnabled(enabled);
 		this.tf.setEnabled(enabled);
+		if (!enabled)
+		{
+			this.tf.setBackground(Constants.TEXT_FIELD_DISABLED_COLOR);
+		}
+		else
+		{
+			this.tf.setBackground(Constants.TEXT_FIELD_ENABLED_COLOR);
+		}
 	}
 	
 	@Override

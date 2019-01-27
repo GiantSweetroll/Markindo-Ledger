@@ -43,7 +43,7 @@ public class SearchFilterPanel extends JPanel implements ActionListener
 		
 		//Properties
 		this.setLayout(new BorderLayout());
-		this.setOpaque(false);
+	//	this.setOpaque(false);
 		this.butAll.addActionListener(this);
 		this.butSearch.addActionListener(this);
 		

@@ -2,7 +2,10 @@ package gui.table;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
+
+import constants.Constants;
 
 public class OverviewTable extends JTable
 {
@@ -23,8 +26,9 @@ public class OverviewTable extends JTable
 		
 		//Table properties
 //		this.getTableHeader().setBackground(new Color (8, 243, 240));			//Set Header color background
-		this.getTableHeader().setBackground(Color.GRAY);
+		this.getTableHeader().setBackground(Constants.TABLE_HEADER_COLOR);
 		this.getTableHeader().setForeground(Color.WHITE);
+		this.getTableHeader().setBorder(BorderFactory.createRaisedBevelBorder());
 		this.setBackground(Color.WHITE);
 		this.setAutoCreateRowSorter(true);						//Automatically create Row sorter
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);			//Set to manual column size, so it works with the JScrollPane

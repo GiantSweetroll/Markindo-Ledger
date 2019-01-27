@@ -1,5 +1,7 @@
 package constants;
 
+import java.awt.Color;
+
 public class Constants
 {
 	public static final String STOCK_FOLDER_PATH = "./data/stock/";
@@ -14,6 +16,20 @@ public class Constants
 	public static final String SITE_FILE_EXTENSION = ".site";
 	public static final String PIC_FOLDER_PATH = "./data/pic/";
 	public static final String PIC_FILE_EXTENSION = ".pic";
+	
+	//Color
+//	public static final Color HIGHLIGHT_COLOR = new Color(0, 120, 215);
+	public static final Color SECTION_BORDER_COLOR = new Color(160,160, 160);
+	public static final Color BUTTON_COLOR = new Color(70, 119, 180);
+//	public static final Color BUTTON_COLOR = new Color(23, 74, 211);
+	public static final Color PANEL_COLOR = new Color(41, 44, 49);
+	public static final Color PANEL_COLOR_2 = new Color(36, 41, 48);
+	public static final Color MENU_BAR_COLOR = new Color(56, 57, 62);
+	public static final Color TABLE_HEADER_COLOR = new Color(179, 131, 0);
+	public static final Color DISABLED_COLOR = Color.GRAY;
+	public static final Color TEXT_FIELD_ENABLED_COLOR = Constants.MENU_BAR_COLOR;
+	public static final Color TEXT_FIELD_DISABLED_COLOR = Constants.DISABLED_COLOR;
+	
 	
 	public static final String ACTION_CELL_NAME = "Aksi";
 	
