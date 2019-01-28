@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import constants.FontConstants;
 import constants.InsetsConstants;
@@ -103,20 +104,23 @@ public class DetailPanel extends JPanel
 	//Selection
 	private void initPanelStock()
 	{
+		//Initialization
 		Stock stock = (Stock)this.data;
-		JLabel labItem = new JLabel("Nama Item");
-		JLabel item = new JLabel(stock.getItemName());
-		JLabel labItemCount = new JLabel("Jumlah Item");
-		JLabel itemCount = new JLabel(Long.toString(stock.getItemCount()));
-		JLabel labItemDesc = new JLabel("Keterangan Item");
-		JLabel itemDesc = new JLabel(stock.getItemDescription());
-		JLabel labDateModif = new JLabel("Tanggal Modifikasi Terakhir");
-		JLabel dateModif = new JLabel(Methods.getDateAsString(stock.getDateLastModified()));
-		JLabel labDateInput = new JLabel("Tanggal Input");
-		JLabel dateInput = new JLabel(Methods.getDateAsString(stock.getDateFirstEntered()));
+		BoldedLabel labItem = new BoldedLabel("Nama Item", SwingConstants.RIGHT);
+		JLabel item = new JLabel(stock.getItemName(), SwingConstants.LEFT);
+		BoldedLabel labItemCount = new BoldedLabel("Jumlah Item", SwingConstants.RIGHT);
+		JLabel itemCount = new JLabel(Long.toString(stock.getItemCount()), SwingConstants.LEFT);
+		BoldedLabel labItemDesc = new BoldedLabel("Keterangan Item", SwingConstants.RIGHT);
+		JLabel itemDesc = new JLabel(stock.getItemDescription(), SwingConstants.LEFT);
+		BoldedLabel labDateModif = new BoldedLabel("Tanggal Modifikasi Terakhir", SwingConstants.RIGHT);
+		JLabel dateModif = new JLabel(Methods.getDateAsString(stock.getDateLastModified()), SwingConstants.LEFT);
+		BoldedLabel labDateInput = new BoldedLabel("Tanggal Input", SwingConstants.RIGHT);
+		JLabel dateInput = new JLabel(Methods.getDateAsString(stock.getDateFirstEntered()), SwingConstants.LEFT);
 		
+		//Add to panel
 		Gbm.goToOrigin(c);
 		c.insets = InsetsConstants.GENERAL;
+		c.fill = GridBagConstraints.BOTH;
 		this.panelCenter.add(labItem, c);					//Item Label
 		Gbm.nextGridColumn(c);
 		this.panelCenter.add(item, c);						//Item
@@ -143,29 +147,31 @@ public class DetailPanel extends JPanel
 	{
 		Alokasi alokasi = (Alokasi)this.data;
 		Site site = Methods.getSiteByID(alokasi.getSite());
-		JLabel labItem = new JLabel("Item"),
-				item = new JLabel(alokasi.getItem()),
-				labProgram = new JLabel("Program"),
-				program = new JLabel(alokasi.getProgram()),
-				labSiteID = new JLabel("ID Site"),
-				siteID = new JLabel(site.getID()),
-				labSiteName = new JLabel("Nama Site"),
-				siteName = new JLabel(site.getName()),
-				labSiteArea = new JLabel("Area"),
-				siteArea = new JLabel(site.getArea()),
-				labItemCount = new JLabel("Jumlah"),
-				itemCount = new JLabel(Long.toString(alokasi.getAmount())),
-				labItemDesc = new JLabel("Keterangan"),
-				itemDesc = new JLabel(alokasi.getItemInfo()),
-				labPIC = new JLabel("PIC"),
-				pic = new JLabel(alokasi.getPIC()),
-				labFileName = new JLabel("Nama File"),
-				fileName = new JLabel(alokasi.getFileName()),
-				labUploadDate = new JLabel("Tanggal Upload"),
-				uploadDate = new JLabel(Methods.getDateAsString(alokasi.getUploadDate()));
+		BoldedLabel labItem = new BoldedLabel("Item:", SwingConstants.RIGHT),
+					labProgram = new BoldedLabel("Program:", SwingConstants.RIGHT),
+					labSiteID = new BoldedLabel("ID Site:", SwingConstants.RIGHT),
+					labSiteName = new BoldedLabel("Nama Site:", SwingConstants.RIGHT),
+					labSiteArea = new BoldedLabel("Area:", SwingConstants.RIGHT),
+					labItemCount = new BoldedLabel("Jumlah:", SwingConstants.RIGHT),
+					labItemDesc = new BoldedLabel("Keterangan:", SwingConstants.RIGHT),
+					labPIC = new BoldedLabel("PIC:", SwingConstants.RIGHT),
+					labFileName = new BoldedLabel("Nama File:", SwingConstants.RIGHT),
+					labUploadDate = new BoldedLabel("Tanggal Upload:", SwingConstants.RIGHT);
+				
+		JLabel item = new JLabel(alokasi.getItem(), SwingConstants.LEFT),
+				program = new JLabel(alokasi.getProgram(), SwingConstants.LEFT),
+				siteID = new JLabel(site.getID(), SwingConstants.LEFT),
+				siteName = new JLabel(site.getName(), SwingConstants.LEFT),
+				siteArea = new JLabel(site.getArea(), SwingConstants.LEFT),
+				itemCount = new JLabel(Long.toString(alokasi.getAmount()), SwingConstants.LEFT),
+				itemDesc = new JLabel(alokasi.getItemInfo(), SwingConstants.LEFT),
+				pic = new JLabel(alokasi.getPIC(), SwingConstants.LEFT),
+				fileName = new JLabel(alokasi.getFileName(), SwingConstants.LEFT),
+				uploadDate = new JLabel(Methods.getDateAsString(alokasi.getUploadDate()), SwingConstants.LEFT);
 		
 		//Add to panel
 		Gbm.goToOrigin(c);
+		c.fill = GridBagConstraints.BOTH;
 		c.insets = InsetsConstants.GENERAL;
 		this.panelCenter.add(labProgram, c);					//Program label
 		Gbm.nextGridColumn(c);
@@ -219,33 +225,35 @@ public class DetailPanel extends JPanel
 		Site site = Methods.getSiteByID(pengiriman.getSite());
 		
 		//Initialization
-		JLabel labDateSent = new JLabel("Tanggal"),
-				dateSent = new JLabel(Methods.getDateAsString(pengiriman.getDateSent())),
-				labProgram = new JLabel("Nama Program"),
-				program = new JLabel(pengiriman.getProgram()),
-				labSiteID = new JLabel("ID Site"),
-				siteID = new JLabel(site.getID()),
-				labSiteName = new JLabel("Nama Site"),
-				siteName = new JLabel(site.getName()),
-				labSiteArea = new JLabel("Area"),
-				siteArea = new JLabel(site.getArea()),
-				labPengirim = new JLabel("Pengirim"),
-				pengirim = new JLabel(pengiriman.getSender()),
-				labPenerima = new JLabel("Penerima"),
-				penerima = new JLabel(pengiriman.getReceiver()),
-				labInfoFromSite = new JLabel("Info Site"),
-				inforFromSite = new JLabel(pengiriman.getInfoFromSite()),
-				labItem = new JLabel("Item"),
-				item = new JLabel(pengiriman.getItemName()),
-				labItemCount = new JLabel("Jumlah Item"),
-				itemCount = new JLabel(Long.toString(pengiriman.getAmount())),
-				labFileName = new JLabel("Nama File"),
-				fileName = new JLabel(pengiriman.getFileName()),
-				labDateUpload = new JLabel("Tanggal Upload"),
-				dateUpload = new JLabel(Methods.getDateAsString(pengiriman.getDateUpload()));
+		BoldedLabel labDateSent = new BoldedLabel("Tanggal:", SwingConstants.RIGHT),	
+					labProgram = new BoldedLabel("Nama Program:", SwingConstants.RIGHT),
+					labSiteID = new BoldedLabel("ID Site:", SwingConstants.RIGHT),
+					labSiteName = new BoldedLabel("Nama Site:", SwingConstants.RIGHT),	
+					labSiteArea = new BoldedLabel("Area:", SwingConstants.RIGHT),	
+					labPengirim = new BoldedLabel("Pengirim:", SwingConstants.RIGHT),
+					labPenerima = new BoldedLabel("Penerima:", SwingConstants.RIGHT),	
+					labInfoFromSite = new BoldedLabel("Info Site:", SwingConstants.RIGHT),	
+					labItem = new BoldedLabel("Item:", SwingConstants.RIGHT),
+					labItemCount = new BoldedLabel("Jumlah Item:", SwingConstants.RIGHT),
+					labFileName = new BoldedLabel("Nama File:", SwingConstants.RIGHT),
+					labDateUpload = new BoldedLabel("Tanggal Upload:", SwingConstants.RIGHT);
+				
+		JLabel dateSent = new JLabel(Methods.getDateAsString(pengiriman.getDateSent()), SwingConstants.LEFT),
+				program = new JLabel(pengiriman.getProgram(), SwingConstants.LEFT),
+				siteID = new JLabel(site.getID(), SwingConstants.LEFT),
+				siteName = new JLabel(site.getName(), SwingConstants.LEFT),
+				siteArea = new JLabel(site.getArea(), SwingConstants.LEFT),
+				pengirim = new JLabel(pengiriman.getSender(), SwingConstants.LEFT),
+				penerima = new JLabel(pengiriman.getReceiver(), SwingConstants.LEFT),
+				inforFromSite = new JLabel(pengiriman.getInfoFromSite(), SwingConstants.LEFT),	
+				item = new JLabel(pengiriman.getItemName(), SwingConstants.LEFT),
+				itemCount = new JLabel(Long.toString(pengiriman.getAmount()), SwingConstants.LEFT),
+				fileName = new JLabel(pengiriman.getFileName(), SwingConstants.LEFT),
+				dateUpload = new JLabel(Methods.getDateAsString(pengiriman.getDateUpload()), SwingConstants.LEFT);
 		
 		//Add to panel
 		Gbm.goToOrigin(c);
+		c.fill = GridBagConstraints.BOTH;
 		c.insets = InsetsConstants.GENERAL;
 		this.panelCenter.add(labDateSent, c);			//Date Sent Label
 		Gbm.nextGridColumn(c);

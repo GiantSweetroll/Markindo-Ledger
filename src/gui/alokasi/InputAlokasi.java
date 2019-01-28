@@ -40,7 +40,19 @@ public class InputAlokasi extends InputForm
 		super("Alokasi", FramePanelConstants.ALOKASI_OVERVIEW, FramePanelConstants.ALOKASI_OVERVIEW);
 	
 		this.program = new InputDropDownMenu("Nama Program", Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
-		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]));
+		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]))
+				{
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = -3971103869344717638L;
+
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						displaySiteInfo();
+					}
+				};
 		this.siteInfo = new InputLongText("Deskripsi Site");
 		this.item = new InputDropDownMenu("Item", Globals.STOCKS.toArray(new Stock[Globals.STOCKS.size()]))
 				{
@@ -64,6 +76,7 @@ public class InputAlokasi extends InputForm
 		this.siteInfo.setEnabled(false);
 		this.stockLeft.setEnabled(false);
 		this.updateSisaStock();
+		this.displaySiteInfo();
 		
 		this.addFormElement(this.program);
 		this.addFormElement(this.site);
@@ -81,6 +94,10 @@ public class InputAlokasi extends InputForm
 	private void updateSisaStock()
 	{
 		this.stockLeft.setData(Long.toString(Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount()));
+	}
+	private void displaySiteInfo()
+	{
+		this.siteInfo.setData(Globals.SITES.get(this.site.getSelectedIndex()).getInfo());
 	}
 	
 	//public methods

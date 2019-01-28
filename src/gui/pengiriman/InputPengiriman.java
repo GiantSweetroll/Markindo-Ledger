@@ -45,7 +45,19 @@ public class InputPengiriman extends InputForm
 	
 		//Initialization
 		this.program = new InputDropDownMenu("Nama Program", Globals.PROGRAMS.toArray(new Program[Globals.PROGRAMS.size()]));
-		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]));
+		this.site = new InputDropDownMenu("Site", Globals.SITES.toArray(new Site[Globals.SITES.size()]))
+				{
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 4784576623662825800L;
+
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						displaySiteInfo();
+					}
+				};
 		this.siteDesc = new InputLongText("Deskripsi Site");
 		this.item = new InputDropDownMenu("Item", Globals.ALOKASI.toArray(new Alokasi[Globals.ALOKASI.size()]))
 				{
@@ -59,7 +71,7 @@ public class InputPengiriman extends InputForm
 					public void actionPerformed(ActionEvent e)
 					{
 						updateSisaAlokasi();
-						updateItemInfo();
+						displayItemInfo();
 					}
 				};
 		this.sisaAlokasi = new InputAmount("Sisa Alokasi");
@@ -72,7 +84,8 @@ public class InputPengiriman extends InputForm
 		
 		//Properties
 		this.updateSisaAlokasi();
-		this.updateItemInfo();
+		this.displayItemInfo();
+		displaySiteInfo();
 		this.siteDesc.setEnabled(false);
 		this.sisaAlokasi.setEnabled(false);
 		this.itemDesc.setEnabled(false);
@@ -99,9 +112,13 @@ public class InputPengiriman extends InputForm
 	{
 		sisaAlokasi.setData(Long.toString(Globals.ALOKASI.get(this.item.getSelectedIndex()).getAmount()));
 	}
-	private void updateItemInfo()
+	private void displayItemInfo()
 	{
 		this.itemDesc.setData(Globals.ALOKASI.get(this.item.getSelectedIndex()).getItemInfo());
+	}
+	private void displaySiteInfo()
+	{
+		this.siteDesc.setData(Globals.SITES.get(this.site.getSelectedIndex()).getInfo());
 	}
 	
 	//Public Methods

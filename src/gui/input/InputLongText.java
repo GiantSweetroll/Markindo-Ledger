@@ -23,7 +23,27 @@ public class InputLongText extends FormElement
 	{
 		//Initialization
 		super(name);
-		this.ta = new JTextArea(15, 20);
+		this.ta = new JTextArea(15, 20)
+				{
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = -2975716783315189689L;
+
+					@Override
+					public void setEditable(boolean b)
+					{
+						super.setEditable(b);
+						if (b)
+						{
+							this.setBackground(Color.WHITE);
+						}
+						else
+						{
+							this.setBackground(Constants.DISABLED_COLOR);
+						}
+					}
+				};
 //		this.scroll = ScrollPaneManager.generateDefaultScrollPane(this.ta, 10, 10);
 		
 		//Properties
