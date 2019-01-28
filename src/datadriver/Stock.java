@@ -95,7 +95,6 @@ public class Stock extends DataDriver
 		
 		list.add(this.getItemName());
 		list.add(Long.toString(this.getItemCount()));
-//		list.add(this.getItemDescription());
 		list.add(Methods.getDateAsString(this.getDateFirstEntered()));
 		list.add(Methods.getDateAsString(this.getDateLastModified()));
 		

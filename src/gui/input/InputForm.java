@@ -226,6 +226,8 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		{
 			element.resetDefaults();
 		}
+		this.scroll.getVerticalScrollBar().setValue(0);
+		this.scroll.getHorizontalScrollBar().setValue(0);
 	}
 	
 	@Override

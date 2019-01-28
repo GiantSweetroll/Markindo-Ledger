@@ -55,19 +55,9 @@ public class Methods
 			String[] arr2 = new String[arr.length + 3];
 			for (int a=0; a<arr.length; a++)
 			{
-				/*
-				JLabel label = new JLabel(arr[a], SwingConstants.CENTER);
-				label.setOpaque(false);
-				arr2[a] = label;
-				*/
+
 				arr2[a] = arr[a];
 			}
-			//Add ActionPanel to the last index of arr2
-			/*
-			arr2[arr2.length-3] = new DetailButton(list.get(i));
-			arr2[arr2.length-2] = new EditButton(list.get(i));
-			arr2[arr2.length-1] = new DeleteButton(list.get(i));
-			*/
 			arr2[arr2.length-3] = "Detil";
 			arr2[arr2.length-2] = "Koreksi";
 			arr2[arr2.length-1] = "Hapus";
