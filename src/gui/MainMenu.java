@@ -26,7 +26,7 @@ public class MainMenu extends JPanel implements ActionListener
 	private static final long serialVersionUID = 2586085524928657829L;
 	
 	private JPanel panelCenter, panelEntryButtons, panelBelow;
-	private JButton butExit, butAloc, butSend, butStock, butMisc;
+	private JButton butExit, butAloc, butSend, butStock;
 	private JLabel labLogo;
 	
 	//Constants
@@ -51,7 +51,6 @@ public class MainMenu extends JPanel implements ActionListener
 		
 		//Properties
 		this.setLayout(new BorderLayout());
-	//	this.setBackground(Color.WHITE);
 		
 		//Add to panel
 		this.add(this.labLogo, BorderLayout.NORTH);
@@ -63,7 +62,6 @@ public class MainMenu extends JPanel implements ActionListener
 		//Initialization
 		this.panelBelow = new JPanel();
 		this.butExit = new JButton("Exit");
-		this.butMisc = new JButton("Lainnya");
 		
 		//Properties
 		this.panelBelow.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
@@ -71,11 +69,8 @@ public class MainMenu extends JPanel implements ActionListener
 		this.butExit.setActionCommand(this.EXIT);
 		this.butExit.addActionListener(this);
 		this.butExit.setMnemonic(KeyEvent.VK_E);
-		this.butMisc.setActionCommand(this.MISC);
-		this.butMisc.addActionListener(this);
 		
 		//Add to panel
-//		this.panelBelow.add(this.butMisc);
 		this.panelBelow.add(this.butExit);
 	}
 	private void initPanelEntryButtons()
