@@ -83,6 +83,7 @@ public class InputPengiriman extends InputForm
 		this.infoFromSite = new InputText("Info Dari Site");
 		
 		//Properties
+		this.itemCount.setData("0");
 		this.updateSisaAlokasi();
 		this.displayItemInfo();
 		displaySiteInfo();
@@ -201,6 +202,11 @@ public class InputPengiriman extends InputForm
 	{
 		long amount = Long.parseLong(this.itemCount.getData());
 		
+		if (this.itemCount.getData().equals("") || this.itemCount.getData().equals("0"))
+		{
+			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah pengiriman tidak sesuai sisa alokasi");
+			return false;
+		}
 		if(amount >= Globals.ALOKASI.get(this.item.getSelectedIndex()).getAmount() ||
 				amount <=0)
 		{

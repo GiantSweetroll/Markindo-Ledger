@@ -75,6 +75,7 @@ public class InputAlokasi extends InputForm
 		//Properties
 		this.siteInfo.setEnabled(false);
 		this.stockLeft.setEnabled(false);
+		this.amount.setData("0");
 		this.updateSisaStock();
 		this.displaySiteInfo();
 		
@@ -176,7 +177,12 @@ public class InputAlokasi extends InputForm
 	@Override
 	public boolean canExport()
 	{
-		if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount() ||
+		if (this.amount.getData().equals("") || this.amount.getData().equals("0"))
+		{
+			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah alokasi tidak sesuai");
+			return false;
+		}
+		else if (Long.parseLong(this.amount.getData()) > Globals.STOCKS.get(this.item.getSelectedIndex()).getItemCount() ||
 				Long.parseLong(this.amount.getData()) <= 0)
 		{
 			MessageManager.showErrorDialog("Input jumlah tidak sesuai", "Jumlah alokasi tidak sesuai");

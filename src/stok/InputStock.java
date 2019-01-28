@@ -5,6 +5,7 @@ import constants.Globals;
 import datadriver.DataDriver;
 import datadriver.Stock;
 import giantsweetroll.date.Date;
+import giantsweetroll.message.MessageManager;
 import gui.input.InputAmount;
 import gui.input.InputForm;
 import gui.input.InputText;
@@ -29,6 +30,8 @@ public class InputStock extends InputForm
 		this.itemName = new InputText("Nama Item");
 		this.itemDesc = new InputText("Keterangan Item");
 		this.itemCount = new InputAmount("Jumlah Item");
+		
+		this.itemCount.setData("0");
 		
 		this.addFormElement(itemName);
 		this.addFormElement(itemCount);
@@ -103,5 +106,14 @@ public class InputStock extends InputForm
 	}
 
 	@Override
-	public boolean canExport() {return true;}
+	public boolean canExport() 
+	{
+		if (this.itemName.getData().equals(""))
+		{
+			MessageManager.showErrorDialog("Silahkan isi nama item", "Nama item stok kosong");
+			return false;
+		}
+		
+		return true;
+	}
 }
