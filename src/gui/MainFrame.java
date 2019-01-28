@@ -16,7 +16,9 @@ import constants.Constants;
 import constants.FontConstants;
 import constants.FramePanelConstants;
 import constants.Globals;
+import constants.URLConstants;
 import giantsweetroll.GGUtilities;
+import giantsweetroll.ImageManager;
 import gui.alokasi.AlokasiOverview;
 import gui.alokasi.InputAlokasi;
 import gui.misc.oveview.PICOverviewPanel;
@@ -47,6 +49,7 @@ public class MainFrame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize((GGUtilities.getScreenSize().width/4)*3, (GGUtilities.getScreenSize().height/4)*3);
 		frame.setLocationRelativeTo(null);
+		frame.setIconImage(ImageManager.getImage(URLConstants.MARKINDO_LOGO));
 //		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //		frame.setUndecorated(true);
 		panel.setLayout(new CardLayout());
