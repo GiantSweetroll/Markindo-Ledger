@@ -53,7 +53,7 @@ public class InputAmount extends FormElement
 	
 	@Override
 	public void resetDefaults()
-	{this.tf.setText("");}
+	{this.tf.setText("0");}
 
 	@Override
 	public void refresh() 

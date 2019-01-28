@@ -183,6 +183,7 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 		{
 			case CANCEL:
 				MainFrame.changePanel(prevPanelName);
+				this.resetDefaults();
 				break;
 				
 			case SAVE:
@@ -212,8 +213,9 @@ public abstract class InputForm extends JPanel implements ActionListener, GUIMet
 					
 					Methods.reloadGlobalVariables();
 					this.savingDataClosing();
-					break;
+					this.resetDefaults();
 				}
+				break;
 		}
 	}
 	
